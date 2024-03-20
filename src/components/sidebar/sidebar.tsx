@@ -33,7 +33,24 @@ type MenuItem = {
 
 const Menu = () => {};
 
-const MenuItem = ({ item }: { item: MenuItem }) => {};
+const MenuItem = ({ item }: { item: MenuItem }) => {
+  const showSidebar: any = useSelector(displaySidebarSelector);
+
+  return (
+    <Link to={item.href}>
+      <div
+        className={`flex items-center gap-3  transition-all duration-200    ${
+          showSidebar ? "px-3 py-2 hover:bg-[#007aff]" : "justify-center"
+        }  rounded-sm`}
+      >
+        <div className={`${!showSidebar && "mb-4"}`}>{item.icon}</div>
+        <h2 className={` ${!showSidebar ? "hidden" : "block text-sm"}`}>
+          {item.title}
+        </h2>
+      </div>
+    </Link>
+  );
+};
 
 const Sidebar = () => {
   const showSidebar: any = useSelector(displaySidebarSelector);
