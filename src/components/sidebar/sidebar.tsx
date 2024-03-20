@@ -15,7 +15,7 @@ import { useTheme } from "../theme-provider/theme-provider";
 import { RiSpeakLine } from "react-icons/ri";
 
 const Logo = () => {
-  const { setTheme, theme } = useTheme();
+  const { theme } = useTheme();
   const logo = theme == "light" ? "logo-light.png" : "logo-dark.png";
 
   return (
