@@ -24,3 +24,26 @@ const Logo = () => {
     </div>
   );
 };
+
+type MenuItem = {
+  icon: ReactElement;
+  title: string;
+  href: string;
+};
+
+const Menu = () => {};
+
+const MenuItem = ({ item }: { item: MenuItem }) => {};
+
+const Sidebar = () => {
+  const showSidebar: any = useSelector(displaySidebarSelector);
+
+  return (
+    <section className={`w-[20vw] bg-card/50  ${!showSidebar && "w-[5vw]"}   `}>
+      {showSidebar && <Logo />}
+      <Menu />
+    </section>
+  );
+};
+
+export default Sidebar;
