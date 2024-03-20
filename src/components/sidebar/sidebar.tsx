@@ -31,7 +31,56 @@ type MenuItem = {
   href: string;
 };
 
-const Menu = () => {};
+const Menu = () => {
+  const showSidebar: any = useSelector(displaySidebarSelector);
+
+  const menuItems: MenuItem[] = [
+    {
+      icon: <AiOutlineHome />,
+      title: "Dashboard",
+      href: "/dashboard",
+    },
+    // {
+    //   icon: <FaUserDoctor />,
+    //   title: "Professtionals",
+
+    //   href: "/health-professionals",
+    // },
+    {
+      icon: <BsHospital />,
+      title: "Health stations",
+      href: "/health-stations",
+    },
+    {
+      // icon: <TbDeviceAnalytics />,
+      //   icon: <TbReportAnalytics />,
+      icon: <TbReport />,
+      title: "Reports",
+      href: "/reports",
+    },
+    {
+      icon: <GrUserAdmin />,
+      title: "Admins",
+      href: "/admins",
+    },
+    {
+      icon: <RiSpeakLine />,
+      title: "News",
+      href: "/news",
+    },
+  ];
+  return (
+    <ul
+      className={`${
+        showSidebar ? "mt-14" : "mt-24"
+      } flex flex-col gap-3 px-8 text-foreground/80 `}
+    >
+      {menuItems.map((menuItem: MenuItem, index: number) => (
+        <MenuItem item={menuItem} key={index} />
+      ))}
+    </ul>
+  );
+};
 
 const MenuItem = ({ item }: { item: MenuItem }) => {
   const showSidebar: any = useSelector(displaySidebarSelector);
