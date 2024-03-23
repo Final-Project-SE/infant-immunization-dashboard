@@ -6,7 +6,7 @@ function Dashboard() {
       <PageHeader pageName="Dashboard" />
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto  mt-2   py-4 px-4  relative">
         {/* <AdminTable admins={admins} /> */}
-        <h1>Hello, Natnael</h1>
+        <h1>Hello, Beteseb Memriya</h1>
       </div>
     </div>
   );

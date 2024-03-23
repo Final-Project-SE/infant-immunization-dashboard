@@ -6,12 +6,13 @@ import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import AppLayout from "./components/app-layout";
 
 import Dashboard from "./pages/dashboard";
-import Admins from "./pages/admins";
-import AddHealthStationPage from "./pages/add-health-station";
-import EditHealthStationPage from "./pages/edit-health-station";
-// import HealthProfessionals from "./pages/health-professionals";
+
 
 import "./styles/globals.css";
+import MotherPage from "./pages/mother page";
+import Children from "./pages/children";
+import Schedule from "./pages/schedule";
+import Vaccination from "./pages/vaccination";
 
 function App() {
   return (
@@ -28,16 +29,17 @@ function App() {
             >
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="mother-page" element={<MotherPage />} />
 
               <Route
-                path="health-stations/add"
-                element={<AddHealthStationPage />}
+                path="children"
+                element={<Children />}
               />
               <Route
-                path="health-stations/:id/edit"
-                element={<EditHealthStationPage />}
+                path="schedule"
+                element={<Schedule />}
               />
-              <Route path="admins" element={<Admins />} />
+              <Route path="Vaccination" element={<Vaccination />} />
             </Route>
           </Routes>
         </BrowserRouter>

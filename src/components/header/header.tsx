@@ -82,7 +82,7 @@ const Header = () => {
             alt="admin image"
             className="aspect-[1/1] w-8 rounded-full "
           />
-          <p className="font-semibold capitalize text-foreground/80">Natnael</p>
+          <p className="font-semibold capitalize text-foreground/80">Beteseb</p>
         </div>
       </div>
     </header>

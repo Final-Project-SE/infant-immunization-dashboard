@@ -40,33 +40,28 @@ const Menu = () => {
       title: "Dashboard",
       href: "/dashboard",
     },
-    // {
-    //   icon: <FaUserDoctor />,
-    //   title: "Professtionals",
-
-    //   href: "/health-professionals",
-    // },
+    
     {
       icon: <BsHospital />,
-      title: "Health stations",
-      href: "/health-stations",
+      title: "Mother Page",
+      href: "/mother-page",
     },
     {
       // icon: <TbDeviceAnalytics />,
       //   icon: <TbReportAnalytics />,
       icon: <TbReport />,
-      title: "Reports",
-      href: "/reports",
+      title: "children",
+      href: "/children",
     },
     {
       icon: <GrUserAdmin />,
-      title: "Admins",
-      href: "/admins",
+      title: "schedule",
+      href: "/schedule",
     },
     {
       icon: <RiSpeakLine />,
-      title: "News",
-      href: "/news",
+      title: "vaccination",
+      href: "/vaccination",
     },
   ];
   return (
