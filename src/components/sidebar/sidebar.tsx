@@ -43,15 +43,15 @@ const Menu = () => {
     
     {
       icon: <BsHospital />,
-      title: "Mother Page",
-      href: "/mother-page",
+      title: "Mothers",
+      href: "/MothersPage",
     },
     {
       // icon: <TbDeviceAnalytics />,
       //   icon: <TbReportAnalytics />,
       icon: <TbReport />,
       title: "children",
-      href: "/children",
+      href: "/ChildrenPage",
     },
     {
       icon: <GrUserAdmin />,
@@ -60,8 +60,8 @@ const Menu = () => {
     },
     {
       icon: <RiSpeakLine />,
-      title: "vaccination",
-      href: "/vaccination",
+      title: "vaccines",
+      href: "/VaccinesPage",
     },
   ];
   return (

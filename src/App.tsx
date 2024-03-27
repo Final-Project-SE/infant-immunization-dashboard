@@ -9,10 +9,11 @@ import Dashboard from "./pages/dashboard";
 
 
 import "./styles/globals.css";
-import MotherPage from "./pages/mother page";
-import Children from "./pages/children";
-import Schedule from "./pages/schedule";
-import Vaccination from "./pages/vaccination";
+import SchedulePage from "./pages/SchedulePage";
+import VaccinesPage from "./pages/VaccinesPage";
+import MothersPage from "./pages/MothersPage";
+import ChildrenPage from "./pages/ChildrenPage";
+
 
 function App() {
   return (
@@ -29,17 +30,17 @@ function App() {
             >
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
-              <Route path="mother-page" element={<MotherPage />} />
+              <Route path="MothersPage" element={<MothersPage/>} />
 
               <Route
-                path="children"
-                element={<Children />}
+                path="ChildrenPage"
+                element={<ChildrenPage />}
               />
               <Route
                 path="schedule"
-                element={<Schedule />}
+                element={<SchedulePage />}
               />
-              <Route path="Vaccination" element={<Vaccination />} />
+              <Route path="VaccinesPage" element={<VaccinesPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
