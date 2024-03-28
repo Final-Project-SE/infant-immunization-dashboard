@@ -9,12 +9,18 @@ import Dashboard from "./pages/dashboard";
 import Admins from "./pages/admins";
 import AddHealthStationPage from "./pages/add-health-station";
 import EditHealthStationPage from "./pages/edit-health-station";
-// import HealthProfessionals from "./pages/health-professionals";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import "./styles/globals.css";
 
+
+// Create a client
+const queryClient = new QueryClient()
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
+
     <StateProvider>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <BrowserRouter>
@@ -43,6 +49,7 @@ function App() {
         </BrowserRouter>
       </ThemeProvider>
     </StateProvider>
+    </QueryClientProvider>
   );
 }
 
