@@ -43,7 +43,7 @@ function Admins() {
    const { isPending, error, data :admins} = useQuery({
     queryKey: ['adminsData'],
     queryFn: () =>
-      fetch('https://api.github.com/repos/TanStack/query').then((res) =>
+      fetch('https://jsonplaceholder.typicode.com/todos').then((res) =>
         res.json(),
       ),
   })

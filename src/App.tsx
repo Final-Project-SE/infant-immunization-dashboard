@@ -9,6 +9,9 @@ import Dashboard from "./pages/dashboard";
 import Admins from "./pages/admins";
 import AddHealthStationPage from "./pages/add-health-station";
 import EditHealthStationPage from "./pages/edit-health-station";
+
+//import Login from "@/pages/Login"
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import "./styles/globals.css";
@@ -21,8 +24,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
 
-    <StateProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+       <StateProvider>
+       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <BrowserRouter>
           <Routes>
             <Route
@@ -45,10 +48,13 @@ function App() {
               />
               <Route path="admins" element={<Admins />} />
             </Route>
+            {/* <Route path="login" element={<Login/>}/> */}
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
     </StateProvider>
+
+     
     </QueryClientProvider>
   );
 }
