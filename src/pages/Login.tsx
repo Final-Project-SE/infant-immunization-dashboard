@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { LoginForm } from "@/components/auth/";
-import  Logo  from "@/components/ui/Logo";
 import { Heading } from "@/components/typography";
 
 const LoginLayout = styled.main`
@@ -16,8 +15,8 @@ const LoginLayout = styled.main`
 function Login() {
     return (
         <LoginLayout>
-            <Logo />
-            <Heading align="center" as="h2">
+            
+            <Heading className="flex justify-center items-center" as="h2">
                 Log in to your account
             </Heading>
             <LoginForm />

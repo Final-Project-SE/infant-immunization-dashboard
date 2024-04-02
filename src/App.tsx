@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-
+import { Toaster } from "react-hot-toast";
 import { StateProvider } from "./store/provider";
 
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
@@ -9,12 +9,13 @@ import Dashboard from "./pages/dashboard";
 import Admins from "./pages/admins";
 import AddHealthStationPage from "./pages/add-health-station";
 import EditHealthStationPage from "./pages/edit-health-station";
-
-//import Login from "@/pages/Login"
+import { ProtectedRoute } from "./components/auth";
+import Login from "@/pages/Login"
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import "./styles/globals.css";
+import PageNotFound from "./pages/PageNotFound";
 
 
 // Create a client
@@ -30,12 +31,12 @@ function App() {
           <Routes>
             <Route
               element={
-                // <ProtectedRoute>
-                <AppLayout />
-                // </ProtectedRoute>
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate replace to="dashboard" />} />
+              <Route index element={<Navigate to="/login" />} />
               <Route path="dashboard" element={<Dashboard />} />
 
               <Route
@@ -48,13 +49,35 @@ function App() {
               />
               <Route path="admins" element={<Admins />} />
             </Route>
-            {/* <Route path="login" element={<Login/>}/> */}
+             <Route path="login" element={<Login/>}/>
+             <Route path="*" element={<PageNotFound />} /> 
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
     </StateProvider>
 
      
+
+    <Toaster
+                position="top-center"
+                gutter={12}
+                containerStyle={{ margin: "8px" }}
+                toastOptions={{
+                    success: {
+                        duration: 3000,
+                    },
+                    error: {
+                        duration: 5000,
+                    },
+                    style: {
+                        fontSize: "16px",
+                        maxWidth: "500px",
+                        padding: "16px 24px",
+                        backgroundColor: "var(--color-grey-0)",
+                        color: "var(--color-grey-700)",
+                    },
+                }}
+            />
     </QueryClientProvider>
   );
 }

@@ -50,7 +50,7 @@ const LoginForm = () => {
                 />
             </FormRowVertical>
             <FormRowVertical>
-                <Button size="large" disabled={isLoading}>
+                <Button className="p-4" disabled={isLoading}>
                     {!isLoading ? "Log in" : <SpinnerMini />}
                 </Button>
             </FormRowVertical>
