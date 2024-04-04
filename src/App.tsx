@@ -9,8 +9,8 @@ import Dashboard from "./pages/dashboard";
 import Admins from "./pages/admins";
 import AddHealthStationPage from "./pages/add-health-station";
 import EditHealthStationPage from "./pages/edit-health-station";
-import { ProtectedRoute } from "./components/auth";
-import Login from "@/pages/Login"
+
+
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -31,12 +31,12 @@ function App() {
           <Routes>
             <Route
               element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                   <AppLayout />
+                // </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate to="/login" />} />
+              <Route index element={<Navigate to="/dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
 
               <Route
@@ -49,7 +49,6 @@ function App() {
               />
               <Route path="admins" element={<Admins />} />
             </Route>
-             <Route path="login" element={<Login/>}/>
              <Route path="*" element={<PageNotFound />} /> 
           </Routes>
         </BrowserRouter>
