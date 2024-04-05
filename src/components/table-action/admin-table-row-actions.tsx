@@ -23,7 +23,7 @@ export const DeleteAdminAction = ({ row }: { row: any }) => {
   return (
     <ConfirmModal
       actionName="Delete"
-      title="Delete admin"
+      title="Delete mothers"
       description="Are you sure you want to delete this booking permanently? This action cannot be undone."
       onConfirm={() => {}}
     >

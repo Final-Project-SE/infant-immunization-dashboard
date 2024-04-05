@@ -57,7 +57,15 @@ export type Mother = {
   id: Number;
   bloodType: String;
   birthDate: Date;
-  user: User;
+  firstName: string;
+  lastName: string;
+  email: String;
+  phone: String;
+  password?: String;
+  role: String;
+  otp: String;
+  activeStatus: String;
+  createdDate: Date;
 };
 
 export type Child = {

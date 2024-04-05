@@ -42,9 +42,9 @@ function UpdateAdminModal({
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] ">
         <DialogHeader>
-          <DialogTitle>Update admin</DialogTitle>
+          <DialogTitle>Update mothers</DialogTitle>
           <DialogDescription>
-            Make changes to admin's information here. Click update when you're
+            Make changes to mother's information here. Click update when you're
             done.
           </DialogDescription>
         </DialogHeader>
@@ -95,7 +95,7 @@ function UpdateAdminModal({
               Cancel
             </Button>
             <Button type="submit" onClick={handleSubmit}>
-              Update admin
+              Update mothers
             </Button>
           </div>
         </DialogFooter>
