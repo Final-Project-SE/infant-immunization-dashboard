@@ -9,10 +9,11 @@ import Dashboard from "./pages/dashboard";
 
 
 import "./styles/globals.css";
-import SchedulePage from "./pages/SchedulePage";
+
 import VaccinesPage from "./pages/VaccinesPage";
 import MothersPage from "./pages/MothersPage";
 import ChildrenPage from "./pages/ChildrenPage";
+import AppointmentsPage from "./pages/AppointmentsPage";
 
 
 function App() {
@@ -37,8 +38,8 @@ function App() {
                 element={<ChildrenPage />}
               />
               <Route
-                path="schedule"
-                element={<SchedulePage />}
+                path="appointment"
+                element={<AppointmentsPage />}
               />
               <Route path="VaccinesPage" element={<VaccinesPage />} />
             </Route>

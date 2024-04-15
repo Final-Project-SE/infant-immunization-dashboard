@@ -55,8 +55,8 @@ const Menu = () => {
     },
     {
       icon: <GrUserAdmin />,
-      title: "schedule",
-      href: "/schedule",
+      title: "appointment",
+      href: "/appointment",
     },
     {
       icon: <RiSpeakLine />,
