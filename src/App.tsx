@@ -10,12 +10,10 @@ import Admins from "./pages/admins";
 import AddHealthStationPage from "./pages/add-health-station";
 import EditHealthStationPage from "./pages/edit-health-station";
 
-
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import "./styles/globals.css";
-import PageNotFound from "./pages/PageNotFound";
+
 
 
 // Create a client
@@ -24,7 +22,6 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-
        <StateProvider>
        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <BrowserRouter>
@@ -48,8 +45,7 @@ function App() {
                 element={<EditHealthStationPage />}
               />
               <Route path="admins" element={<Admins />} />
-            </Route>
-             <Route path="*" element={<PageNotFound />} /> 
+            </Route>  
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
