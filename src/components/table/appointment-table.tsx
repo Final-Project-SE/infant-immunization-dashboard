@@ -1,12 +1,8 @@
 import { type MRT_ColumnDef } from "material-react-table";
 
 import Table from "../ui/table";
-import AdminTableToolbarAction from "../table-action/admin-table-toolbar-action";
-import {
-  DeleteAdminAction,
-  UpdateAdminAction,
-} from "../table-action/admin-table-row-actions";
-import { Admin, Appointment } from "@/utils/types/component";
+
+import { Appointment } from "@/utils/types/component";
 import { formatDate } from "@/utils/constants/date";
 import CreateAppointmentToolbarAction from "../table-action/appointment-toolbar-action";
 import {

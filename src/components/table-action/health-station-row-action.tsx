@@ -35,6 +35,7 @@ export const UpdateHealthStationRowAction = ({ row }: { row: any }) => {
 };
 
 export const DeactivateHealthStationRowAction = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     // <ConfirmModal
     //   actionName="Deactivate"
@@ -54,6 +55,7 @@ export const DeactivateHealthStationRowAction = ({ row }: { row: any }) => {
 };
 
 export const DeleteHealthStationRowAction = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     <ConfirmModal
       actionName="Delete"

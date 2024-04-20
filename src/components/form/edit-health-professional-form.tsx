@@ -26,14 +26,14 @@ const healthProfessional = {
 
 function EditHealthProfessionalForm({ onEdit }: { onEdit: Function }) {
   const {
-    id,
+    // id,
     firstName,
     lastName,
     gender,
-    imageUrl,
-    email,
-    phone,
-    role,
+    // imageUrl,
+    // email,
+    // phone,
+    // role,
     title,
     position,
   } = healthProfessional;

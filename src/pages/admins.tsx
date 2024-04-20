@@ -49,7 +49,7 @@ import { useQuery } from "@tanstack/react-query";
 function Admins() {
   const {
     isPending,
-    error,
+    // error,
     data: admins,
   } = useQuery({
     queryKey: ["adminsData"],
