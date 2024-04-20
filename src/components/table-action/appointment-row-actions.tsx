@@ -23,7 +23,7 @@ export const RescheduleAppointment = ({ row }: { row: any }) => {
   return (
     <MenuItem
       key="edit"
-      onClick={() => navigate(`/health-professionals/${row.id}/edit`)}
+      onClick={() => {}}
       className="text-gray-600 flex items-center gap-2"
     >
       <Edit className="text-green-500 text-sm" /> Reschedule
