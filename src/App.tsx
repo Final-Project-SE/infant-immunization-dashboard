@@ -18,6 +18,8 @@ import HealthStations from "./pages/health-stations";
 import AddHealthProfessionalPage from "./pages/add-health-professional";
 import EditHealthProfessionalPage from "./pages/edit-health-professional";
 import MothersPage from "./pages/mother";
+import AppointmentsPage from "./pages/appointments";
+import Login from "./pages/login";
 
 // State management imports
 import { StateProvider } from "./store/provider";
@@ -31,7 +33,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Style imports
 import "./styles/globals.css";
 import PageNotFound from "./pages/page-not-found";
-import AppointmentsPage from "./pages/appointments";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ function App() {
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <BrowserRouter>
             <Routes>
+              <Route path="login" element={<Login />} />
               <Route
                 element={
                   // <ProtectedRoute>

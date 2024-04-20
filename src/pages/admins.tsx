@@ -1,7 +1,14 @@
+//  Components
 import PageHeader from "@/components/header/page-header";
 import AdminTable from "@/components/table/admin-table";
+import { Spinner } from "@/components/ui";
+import Empty from "@/components/error-display/empty";
+
+//  Types
 import { Admin } from "@/utils/types/component";
-import {useQuery} from '@tanstack/react-query'
+
+//  Hooks
+import { useQuery } from "@tanstack/react-query";
 
 // // Dummy admin data
 // const admins: Admin[] = [
@@ -40,20 +47,22 @@ import {useQuery} from '@tanstack/react-query'
 // ];
 
 function Admins() {
-   const { isPending, error, data :admins} = useQuery({
-    queryKey: ['adminsData'],
+  const {
+    isPending,
+    error,
+    data: admins,
+  } = useQuery({
+    queryKey: ["adminsData"],
     queryFn: () =>
-      fetch('https://jsonplaceholder.typicode.com/todos').then((res) =>
-        res.json(),
+      fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+        res.json()
       ),
-  })
+  });
 
-  if (isPending) return 'Loading...'
+  if (isPending) return <Spinner />;
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (!admins) return <Empty resourceName="admin" />;
 
-
-  
   return (
     <div className="mx-auto w-full bg-muted rounded  mt-1 pb-4 ">
       <PageHeader pageName="Admins" />
