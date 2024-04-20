@@ -1,7 +1,7 @@
 import PageHeader from "@/components/header/page-header";
-import AdminTable from "@/components/table/admin-table";
+
 import AppointmentTable from "@/components/table/appointment-table";
-import { Admin, Appointment } from "@/utils/types/component";
+import { Appointment } from "@/utils/types/component";
 
 // Dummy appointments data
 const appointments: Appointment[] = [
