@@ -1,39 +1,7 @@
 import PageHeader from "@/components/header/page-header";
 import HealthStationTable from "@/components/table/health-station-table";
 import { HealthStation } from "@/utils/types/component";
-
-const healthStations: HealthStation[] = [
-  {
-    id: 1,
-    name: "Jimma Health Station",
-    type: "Health Station",
-    region: "Oromia",
-    zone: "Jimma",
-    city: "Jimma city",
-    kebele: "Kochi",
-    houseNumber: "djfxbjbdjxf",
-  },
-  {
-    id: 2,
-    name: "Jimma Health Station",
-    type: "Health Station",
-    region: "Oromia",
-    zone: "Jimma",
-    city: "Jimma city",
-    kebele: "Kochi",
-    houseNumber: "djfxbjbdjxf",
-  },
-  {
-    id: 3,
-    name: "Jimma Health Station",
-    type: "Health Station",
-    region: "Oromia",
-    zone: "Jimma",
-    city: "Jimma city",
-    kebele: "Kochi",
-    houseNumber: "djfxbjbdjxf",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
 
 function HealthStations() {
   const {
