@@ -13,6 +13,7 @@ import EditHealthStationPage from "./pages/edit-health-station";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import "./styles/globals.css";
+import HealthStations from "./pages/health-stations";
 
 
 
@@ -35,6 +36,7 @@ function App() {
             >
               <Route index element={<Navigate to="/dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="health-stations" element={<HealthStations/>}/>
 
               <Route
                 path="health-stations/add"
