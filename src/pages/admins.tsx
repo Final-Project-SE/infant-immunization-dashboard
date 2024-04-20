@@ -56,7 +56,7 @@ function Admins() {
 
   if (isPending) return <Spinner />;
 
-  if (!admins) return <Empty resourceName="admin" g />;
+  if (!admins) return <Empty resourceName="admin" />;
 
   return (
     <div className="mx-auto w-full bg-muted rounded  mt-1 pb-4 ">
