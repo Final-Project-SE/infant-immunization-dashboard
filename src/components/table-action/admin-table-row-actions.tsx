@@ -20,6 +20,7 @@ export const UpdateAdminAction = ({ row }: { row: any }) => {
 };
 
 export const DeleteAdminAction = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     <ConfirmModal
       actionName="Delete"

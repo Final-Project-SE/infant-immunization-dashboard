@@ -19,7 +19,7 @@ const UserMenuCard = ({
     setShowMenu(false);
   };
 
-  const handleLogout = (e: any) => {
+  const handleLogout = () => {
     hideUserMenu();
   };
 

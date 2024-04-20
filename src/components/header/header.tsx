@@ -1,5 +1,5 @@
 "use client";
-import  { useState } from "react";
+import { useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { LuMenu } from "react-icons/lu";
 import { MdNightlight } from "react-icons/md";
@@ -40,7 +40,7 @@ const Header = () => {
         <IconContainer
           Icon={LuMenu}
           noBg
-          handler={(e: any) => {
+          handler={() => {
             handleDisplaySidebar();
           }}
         />

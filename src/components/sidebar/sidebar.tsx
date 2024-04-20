@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactElement } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 
-import { GrUserAdmin } from "react-icons/gr";
+import { GrUserAdmin, GrUserFemale } from "react-icons/gr";
 
 import { TbReport } from "react-icons/tb";
 
@@ -13,6 +13,9 @@ import { BsHospital } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useTheme } from "../theme-provider/theme-provider";
 import { RiSpeakLine } from "react-icons/ri";
+
+import { FaChildren } from "react-icons/fa6";
+import { WiTime7 } from "react-icons/wi";
 
 const Logo = () => {
   const { theme } = useTheme();
@@ -57,6 +60,21 @@ const Menu = () => {
       icon: <TbReport />,
       title: "Reports",
       href: "/reports",
+    },
+    {
+      icon: <WiTime7 />,
+      title: "Appointments",
+      href: "/appointments",
+    },
+    {
+      icon: <GrUserFemale />,
+      title: "Mothers",
+      href: "/mothers",
+    },
+    {
+      icon: <FaChildren />,
+      title: "Children",
+      href: "/children",
     },
     {
       icon: <GrUserAdmin />,
