@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export default function useHealthStations() {
+export  function useHealthStations() {
   return useQuery({
     queryKey: ["healthData"],
     queryFn: () =>

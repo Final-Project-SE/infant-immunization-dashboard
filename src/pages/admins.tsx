@@ -1,16 +1,19 @@
-// components/Admins.tsx
+
 import React from 'react';
 import PageHeader from "@/components/header/page-header";
 import AdminTable from "@/components/table/admin-table";
 import { Admin } from "@/utils/types/component";
-import { useAdmins } from "@/hooks/useAdmins";
+import { useAdmins } from "@/hooks/api/useAdmins";
+import { Spinner } from "@/components/ui";
+import Empty from "@/components/error-display/empty";
 
 const Admins: React.FC = () => {
   const { isFetching, error, data: admins } = useAdmins();
 
-  if (isFetching) return <div>Loading...</div>;
+  if (isFetching) return <Spinner />;
 
-  if (error) return <div>An error has occurred: {error.message}</div>;
+if (error) return <Empty resourceName="admins" />;
+
 
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4 ">
