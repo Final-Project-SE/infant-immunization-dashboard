@@ -31,15 +31,66 @@ const Table = ({
         enableRowActions={true}
         positionActionsColumn="last"
         enableRowNumbers={enableRowNumbers}
-        enablePagination={false}
+        enablePagination={true}
+        mrtTheme={{
+          baseBackgroundColor: theme === "dark" ? "#1f2937" : "#fff",
+        }}
+        // change the text color of table on light and dark
+        muiTableProps={{
+          sx: {
+            color: theme === "dark" ? "#fff" : "#000",
+          },
+        }}
+        muiTableBodyRowProps={{
+          sx: {
+            // backgroundColor: "#1f2937",
+            // color: "#fff",
+
+            border: "0 solid transparent",
+          },
+        }}
+        muiTableBodyCellProps={{
+          sx: {
+            // backgroundColor: "#1f2937",
+            // color: "#fff",
+            color: theme === "dark" ? "#fff" : "#000",
+            border: "0 solid transparent",
+          },
+        }}
+        muiTableHeadCellProps={{
+          sx: {
+            // backgroundColor: "#1f2937",
+            // color: "#fff",
+            border: "0 solid transparent",
+            color: theme === "dark" ? "#fff" : "#000",
+          },
+        }}
+        muiTableFooterRowProps={{
+          sx: {
+            // backgroundColor: "#1f2937",
+            color: "red",
+            // border: "0 solid transparent",
+          },
+        }}
+        // change the color of toolbar icon
+
         renderRowActionMenuItems={({ row, closeMenu }) => [
           RowActions &&
             RowActions.map((RowAction) => (
-              <RowAction row={row.original} closeMenu={closeMenu} />
+              <RowAction
+                row={row.original}
+                closeMenu={closeMenu}
+                sx={{ color: theme === "dark" ? "#fff" : "#000" }}
+              />
             )),
         ]}
         renderTopToolbarCustomActions={({ table }) => {
-          return ToolBarAction ? <ToolBarAction table={table} /> : null;
+          return ToolBarAction ? (
+            <ToolBarAction
+              table={table}
+              style={{ color: theme === "dark" ? "#fff" : "#000" }}
+            />
+          ) : null;
         }}
       />
     </TableThemeProvider>
