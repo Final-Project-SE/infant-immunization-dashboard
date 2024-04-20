@@ -1,10 +1,10 @@
 import { useTheme } from "@/utils/providers/theme-provider";
-import React from "react";
 
 function Logo() {
   const theme = useTheme();
   console.log(theme);
-  const logoImg = theme.theme == "dark" ? "/logo-dark.png" : "/logo-light.png";
+  const logoImg =
+    theme == ("dark" as any) ? "/logo-dark.png" : "/logo-light.png";
 
   return (
     <div className="text-center">

@@ -12,19 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Mother } from "@/utils/types/component";
-
-// Dummy data fetched
-
-const mother: Mother = {
-  id: "1",
-  firstName: "Abebech",
-  lastName: "Kebede",
-  middleName: "Ayele",
-  phone: "+251901020301",
-  birthDate: new Date(Date.now()),
-  bloodType: "A+",
-};
 
 function UpdateMotherModal({
   mother,

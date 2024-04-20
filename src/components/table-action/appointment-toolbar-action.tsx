@@ -1,4 +1,3 @@
-import CreateAdminModal from "../modal/create-admin-modal";
 import CreateAppointmentModal from "../modal/create-appointment-modal";
 import { Button } from "../ui/button";
 

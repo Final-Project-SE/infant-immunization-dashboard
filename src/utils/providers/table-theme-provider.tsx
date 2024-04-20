@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactElement, useMemo } from "react";
-import { createTheme, PaletteColorOptions, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 import { useTheme } from "@/utils/providers/theme-provider";
 
@@ -22,20 +22,10 @@ export function TableThemeProvider({ children }: { children: ReactElement }) {
   const tableTheme = useMemo(
     () =>
       createTheme({
-        // shadows: {
-        //   ShadowRoot: "none",
-        // },
-
         palette: {
-          // mode: theme as any, //let's use the same dark/light mode as the global theme
-          // primary: { main: "rgb(255,122,0)" },
-          // // primary: globalTheme.palette.secondary, //swap in the secondary color as the primary for the table
-          // info: {
-          //   main: "rgb(255,122,0)", //add in a custom color for the toolbar alert background stuff
-          // },
-          // background: {
-          //   default: tableColors?.bodyBg,
-          // },
+          background: {
+            default: tableColors?.bodyBg,
+          },
         },
         typography: {
           button: {

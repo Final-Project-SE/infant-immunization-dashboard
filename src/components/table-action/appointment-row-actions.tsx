@@ -6,6 +6,7 @@ import ConfirmModal from "../modal/confirm-modal";
 import { useNavigate } from "react-router-dom";
 
 export const ViewAppointment = ({ row }: { row: any }) => {
+  console.log(row);
   const navigate = useNavigate();
   return (
     <MenuItem
@@ -19,7 +20,7 @@ export const ViewAppointment = ({ row }: { row: any }) => {
 };
 
 export const RescheduleAppointment = ({ row }: { row: any }) => {
-  const navigate = useNavigate();
+  console.log(row);
   return (
     <MenuItem
       key="edit"
@@ -32,6 +33,7 @@ export const RescheduleAppointment = ({ row }: { row: any }) => {
 };
 
 export const SendReminder = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     <MenuItem
       key="send-reminder"
@@ -44,6 +46,7 @@ export const SendReminder = ({ row }: { row: any }) => {
 };
 
 export const CancelAppointment = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     <MenuItem
       key="cancel"
@@ -62,6 +65,7 @@ export const DeleteAppointment = ({
   row: any;
   onConfirm: Function;
 }) => {
+  console.log(row);
   return (
     <ConfirmModal
       actionName="Delete"

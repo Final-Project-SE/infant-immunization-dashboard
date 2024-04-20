@@ -1,4 +1,3 @@
-import React from "react";
 import PageHeader from "@/components/header/page-header";
 import HealthProfessionalTable from "@/components/table/health-professional-table";
 import { HealthProfessionalProp } from "@/utils/types/component";

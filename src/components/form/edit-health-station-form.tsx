@@ -20,6 +20,7 @@ const healthStation: HealthStation = {
   type: "healthcenter",
   region: "oromia",
   city: "Jimma",
+  zone: "Jimma",
   subcity: "Jimma",
   kebele: "Kochi",
   houseNumber: "92cc1826",
@@ -34,7 +35,7 @@ function EditHealthStationForm({}: {}) {
   // Find the health station by id
 
   const {
-    id,
+    // id,
     name,
     type,
     region,
