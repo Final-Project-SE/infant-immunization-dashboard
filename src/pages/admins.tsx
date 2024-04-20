@@ -1,8 +1,13 @@
-import Empty from "@/components/error-display/empty";
+//  Components
 import PageHeader from "@/components/header/page-header";
 import AdminTable from "@/components/table/admin-table";
 import { Spinner } from "@/components/ui";
+import Empty from "@/components/error-display/empty";
+
+//  Types
 import { Admin } from "@/utils/types/component";
+
+//  Hooks
 import { useQuery } from "@tanstack/react-query";
 
 // // Dummy admin data
