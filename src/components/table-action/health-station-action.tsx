@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import CreateAdminModal from "../modal/create-admin-modal";
 import { Button } from "../ui/button";
 
-const AdminTableToolbarAction = () => {
+const HealthStationTableToolbarAction = () => {
+  const navigate = useNavigate();
   return (
-    <CreateAdminModal onCreate={() => {}}>
-      <Button>Create new health station</Button>
-    </CreateAdminModal>
+    <Button onClick={() => navigate("/health-stations/add")}>
+      Create new health station
+    </Button>
   );
 };
 
-export default AdminTableToolbarAction;
+export default HealthStationTableToolbarAction;

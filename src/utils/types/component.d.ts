@@ -1,5 +1,4 @@
-export type HealthStation = {
-  id: Number;
+export type CreateHealthStationDto = {
   name: String;
   type: String;
   region: String;
@@ -8,6 +7,20 @@ export type HealthStation = {
   kebele: String;
   houseNumber: String;
   description?: String;
+};
+
+export type HealthStation = {
+  id: Number;
+  name: String;
+  type?: String;
+  region: String;
+  zone: String;
+  city: String;
+  subcity?: String;
+  kebele?: String;
+  houseNumber: String;
+  description?: String;
+  images?: String[];
   createdDate?: Date;
 };
 
@@ -47,18 +60,30 @@ export type UserProfile = {
   id: Number;
   firstName: String;
   lastName: String;
-  middleName: String;
-  sex: Sex;
+  middleName?: String;
+  gender: Gender;
   imageUrl: String;
   user: User;
 };
 
 export type Mother = {
-  id: Number;
-  bloodType: String;
+  id: String;
+  firstName: String;
+  lastName: String;
+  middleName?: String;
+  phone?: String;
   birthDate: Date;
-  user: User;
+  bloodType: String;
+  RH?: String;
+  photo?: String;
 };
+
+// export type Mother = {
+//   id: Number;
+//   bloodType: String;
+//   birthDate: Date;
+//   user: User;
+// };
 
 export type Child = {
   id: Number;
@@ -89,14 +114,34 @@ export type Certificate = {
 
 export type Appointment = {
   id: Number;
-  user: User;
-  healthStation: HealthStation;
-  appointmentDate: Date;
-  createdDate: Date;
-  description: String;
-  vaccine: Vaccine;
-  status: String;
+  motherFirstName: String;
+  motherLastName: String;
+  motherMiddleName: String;
+  healthStationName: String;
+
+  visitDate: Date;
+
+  // Visit time interval
+  fromTime: String;
+  toTime: String;
+  visitTimeInterval: String;
+
+  // the health professional who will attend the appointment
+  healthProfessionalName: String;
+  healthProfessionalTitle: String;
+  healthProfessionalEmail: String;
+
+  description?: String;
+  status: AppointmentStatus;
+  createdDate?: Date;
 };
+
+export type AppointmentStatus =
+  | "pending"
+  | "suspended"
+  | "completed"
+  | "cancelled"
+  | "failed";
 
 export type News = {
   id: Number;
@@ -125,4 +170,25 @@ export type Address = {
   houseNumber: String;
 };
 
-type Sex = "Male" | "Female";
+// export type HealthProfessional = {
+//   id: Number;
+//   profile: UserProfile;
+//   title: String;
+//   position: String;
+//   healthStation: HealthStation;
+// };
+
+export type HealthProfessionalProp = {
+  id: Number;
+  firstName: string;
+  lastName: string;
+  email: String;
+  phone?: String;
+  gender: Gender;
+  imageUrl?: String;
+  role: String;
+  title: String;
+  position: String;
+};
+
+type Gender = "male" | "female";

@@ -1,12 +1,15 @@
 import { type MRT_ColumnDef } from "material-react-table";
 
 import Table from "../ui/table";
-import AdminTableToolbarAction from "../table-action/admin-table-toolbar-action";
-import {
-  DeleteAdminAction,
-  UpdateAdminAction,
-} from "../table-action/admin-table-row-actions";
+
 import { HealthStation } from "@/utils/types/component";
+import HealthStationTableToolbarAction from "../table-action/health-station-action";
+import {
+  DeleteHealthStationRowAction,
+  UpdateHealthStationRowAction,
+  DeactivateHealthStationRowAction,
+  ViewDetailRowAction,
+} from "../table-action/health-station-row-action";
 
 //column definitions...
 const columns: MRT_ColumnDef<HealthStation>[] = [
@@ -72,18 +75,6 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     Header: <p>City</p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
-  {
-    enableSorting: false,
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
-    enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.city, //alternate way
-    id: "subcity", //id required if you use accessorFn instead of accessorKey
-    header: "Subcity",
-    Header: <p>Subcity</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
-  },
 ];
 
 const HealthStationTable = ({
@@ -95,8 +86,13 @@ const HealthStationTable = ({
     <Table
       columnDefinition={columns as any}
       data={healthStations}
-      RowActions={[UpdateAdminAction, DeleteAdminAction]}
-      ToolBarAction={AdminTableToolbarAction}
+      RowActions={[
+        ViewDetailRowAction,
+        UpdateHealthStationRowAction,
+        DeactivateHealthStationRowAction,
+        DeleteHealthStationRowAction,
+      ]}
+      ToolBarAction={HealthStationTableToolbarAction}
     />
   );
 };
