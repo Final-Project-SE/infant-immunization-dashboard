@@ -1,4 +1,4 @@
-import { Edit, Eye, Pen, PencilLine, SquarePen, Timer } from "lucide-react";
+import { Eye, SquarePen, Timer } from "lucide-react";
 import { MenuItem } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 
@@ -50,6 +50,7 @@ export const UpdateMotherAction = ({ row }: { row: any }) => {
 };
 
 export const DeleteMotherAction = ({ row }: { row: any }) => {
+  console.log(row);
   return (
     <ConfirmModal
       actionName="Delete"

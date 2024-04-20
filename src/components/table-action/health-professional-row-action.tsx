@@ -25,6 +25,7 @@ export const DeleteHealthProfessionalAction = ({
   row: any;
   onConfirm: Function;
 }) => {
+  console.log(row);
   return (
     <ConfirmModal
       actionName="Delete"
