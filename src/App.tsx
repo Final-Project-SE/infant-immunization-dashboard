@@ -79,9 +79,8 @@ function App() {
                 <Route path="vaccines" element={<Vaccines />} />
                 <Route path="news" element={<News />} />
                 <Route path="reports" element={<Reports />} />
-                // unknown route
-                <Route path="*" element={<PageNotFound />} />
               </Route>
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
