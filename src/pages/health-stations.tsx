@@ -1,5 +1,7 @@
+import Empty from "@/components/error-display/empty";
 import PageHeader from "@/components/header/page-header";
 import HealthStationTable from "@/components/table/health-station-table";
+import { Spinner } from "@/components/ui";
 import { HealthStation } from "@/utils/types/component";
 import { useQuery } from "@tanstack/react-query";
 
@@ -16,9 +18,9 @@ function HealthStations() {
       ),
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return <Spinner />;
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error) return <Empty resourceName="health station" />;
 
   return (
     <div className="mx-auto w-full bg-muted rounded  mt-1 pb-4 ">
