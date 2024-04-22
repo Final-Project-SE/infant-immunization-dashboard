@@ -6,7 +6,7 @@ export  function useHealthStations() {
     queryKey: ["healthData"],
     queryFn: () =>
       axios
-        .get("https://final-year-project-backend.onrender.com/api/hs")
+        .get("https://final-year-project-backend.onrender.com/api/hs/all")
         .then((res) => res.data),
   });
 }
