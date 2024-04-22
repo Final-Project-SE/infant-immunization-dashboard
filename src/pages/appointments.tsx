@@ -1,4 +1,4 @@
-// pages/AppointmentsPage.js
+
 import PageHeader from "@/components/header/page-header";
 import AppointmentTable from "@/components/table/appointment-table";
 import useAppointments from "@/hooks/api/useAppointments";

@@ -1,4 +1,4 @@
-// pages/MothersPage.js
+
 import PageHeader from "@/components/header/page-header";
 import MotherTable from "@/components/table/mother-table";
 import useMothers from "@/hooks/api/useMothers";
