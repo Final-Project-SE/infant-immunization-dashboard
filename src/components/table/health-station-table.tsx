@@ -37,7 +37,7 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     accessorFn: (originalRow) => originalRow.name, //alternate way
     id: "name", //id required if you use accessorFn instead of accessorKey
     header: "Health station name",
-    Header: <p>First name</p>, //optional custom markup
+    Header: <p>Health station name</p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
   {
@@ -51,18 +51,7 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     Header: <p>Type </p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
-  {
-    enableSorting: false,
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
-    enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.region, //alternate way
-    id: "region", //id required if you use accessorFn instead of accessorKey
-    header: "region",
-    Header: <p>Region</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render,
-  },
+
   {
     enableSorting: false,
     enableColumnFilter: false,
@@ -75,6 +64,18 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     Header: <p>City</p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
+  {
+    enableSorting: false,
+    enableColumnFilter: false,
+    enableEditing: false,
+    enableColumnActions: false,
+    enableColumnDragging: false,
+    accessorFn: (originalRow) => originalRow.subcity, //alternate way
+    id: "subcity", //id required if you use accessorFn instead of accessorKey
+    header: "subcity",
+    Header: <p>Subcity</p>, //optional custom markup
+    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render,
+  },
 ];
 
 const HealthStationTable = ({
@@ -82,6 +83,7 @@ const HealthStationTable = ({
 }: {
   healthStations: HealthStation[];
 }) => {
+  console.log(healthStations);
   return (
     <Table
       columnDefinition={columns as any}
