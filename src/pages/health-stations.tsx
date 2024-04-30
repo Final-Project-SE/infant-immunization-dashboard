@@ -2,6 +2,7 @@ import Empty from "@/components/error-display/empty";
 import PageHeader from "@/components/header/page-header";
 import HealthStationTable from "@/components/table/health-station-table";
 import { Spinner } from "@/components/ui";
+import config from "@/configs/config";
 import { HealthStation } from "@/utils/types/component";
 import { useQuery } from "@tanstack/react-query";
 
@@ -12,10 +13,7 @@ function HealthStations() {
     data: healthstation,
   } = useQuery({
     queryKey: ["healthData"],
-    queryFn: () =>
-      fetch("https://final-year-project-backend.onrender.com/hs").then((res) =>
-        res.json()
-      ),
+    queryFn: () => fetch(config.BASE_URL).then((res) => res.json()),
   });
 
   if (isPending) return <Spinner />;
