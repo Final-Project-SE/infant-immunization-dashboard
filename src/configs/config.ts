@@ -1,8 +1,8 @@
-import dotenv from "dotenv";
-dotenv.config({
-  path: ".env",
-});
+// import dotenv from "dotenv";
+// dotenv.config({
+//   path: ".env",
+// });
 
 export default {
-  BASE_URL: process.env.BASE_URL as string,
+  BASE_URL: "http://localhost:7777/api",
 };
