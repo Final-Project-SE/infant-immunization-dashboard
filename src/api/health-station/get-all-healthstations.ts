@@ -2,7 +2,9 @@ import config from "@/configs/config";
 import axios from "axios";
 async function getAllHealthStations() {
   try {
-    const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
+    // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
+    const res = await axios.get(`${config.BASE_URL}/hs/all`);
+    console.log(res);
 
     const healthStations = res.data;
     return healthStations;
