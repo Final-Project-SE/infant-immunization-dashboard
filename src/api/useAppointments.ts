@@ -6,6 +6,7 @@ export default function useAppointments() {
   return useQuery({
     queryKey: ['appointmentsData'],
     queryFn: () =>
-      axios.get(`${config.BASE_URL}//appointments`).then((res) => res.data),
+      axios.get(`${config.BASE_URL}/appointments`).then((res) => res.data),
   });
 }
+
