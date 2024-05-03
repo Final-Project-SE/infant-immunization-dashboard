@@ -29,7 +29,7 @@ const healthStation: HealthStation = {
     "This is a health center located in Jimma, Oromia giving health services to the community",
 };
 
-function EditHealthStationForm({}: {}) {
+function EditHealthStationForm({ onEdit }: { onEdit: Function }) {
   const navigate = useNavigate();
 
   // Find the health station by id
@@ -47,7 +47,7 @@ function EditHealthStationForm({}: {}) {
   } = healthStation;
 
   const handleSubmit = () => {
-    // Update the health station
+    onEdit()
   };
 
   return (

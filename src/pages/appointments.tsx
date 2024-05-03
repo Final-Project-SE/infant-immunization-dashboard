@@ -6,10 +6,11 @@ import Empty from "@/components/error-display/empty";
 import { Appointment } from "@/utils/types/component";
 
 
+
 function AppointmentsPage() {
   const { isFetching, error, data: appointments } = useAppointments();
 
-  if (isFetching) return <Spinner />;
+  if (isFetching) return <Spinner/>;
 
   if (error) return <Empty resourceName="appointments" />;
   return (
