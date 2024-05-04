@@ -7,6 +7,6 @@ export default function useMothers() {
   return useQuery({
     queryKey: ['mothersData'],
     queryFn: () =>
-      axios.get(`${config.BASE_URL}/mothers/`).then((res) => res.data),
+      axios.get(`${config.BASE_URL}/mother/`).then((res) => res.data),
   });
 }

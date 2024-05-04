@@ -144,11 +144,11 @@ export type AppointmentStatus =
   | "failed";
 
 export type News = {
-  id: Number;
+  id: number;
   user: User;
-  title: String;
-  description: String;
-  imageUrl: String;
+  title: string;
+  description: string;
+  imageUrl: string;
   createdDate: Date;
 };
 

@@ -2,11 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import config from "@/configs/config";
 
-export default function useAppointments() {
+export default function useNews() {
   return useQuery({
-    queryKey: ['appointmentsData'],
+    queryKey: ['newsData'],
     queryFn: () =>
-      axios.get(`${config.BASE_URL}/appointment`).then((res) => res.data),
+      axios.get(`${config.BASE_URL}/news/`).then((res) => res.data),
   });
 }
-
