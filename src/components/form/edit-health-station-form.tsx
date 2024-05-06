@@ -18,7 +18,7 @@ import ErrorMessage from "../error-display/error-message";
 
 // Health station later to be fetched from the server with params
 
-function EditHealthStationForm() {
+function EditHealthStationForm({ onEdit }: { onEdit: Function }) {
   const navigate = useNavigate();
 
   // Find the health station by id
@@ -41,7 +41,7 @@ function EditHealthStationForm() {
   } = hs;
 
   const handleSubmit = () => {
-    // Update the health station
+    onEdit();
   };
 
   return (

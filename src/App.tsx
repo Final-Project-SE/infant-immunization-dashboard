@@ -34,6 +34,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./styles/globals.css";
 import PageNotFound from "./pages/page-not-found";
 import { Suspense } from "react";
+import Children from "./pages/children";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -80,6 +81,7 @@ function App() {
                 />
                 <Route path="mothers" element={<MothersPage />} />
                 {/* <Route path="mothers/:id" element={<MotherDetailPage />} /> */}
+                <Route path="children" element={<Children />} />
                 <Route path="appointments" element={<AppointmentsPage />} />
                 <Route path="admins" element={<Admins />} />
                 <Route path="vaccines" element={<Vaccines />} />
