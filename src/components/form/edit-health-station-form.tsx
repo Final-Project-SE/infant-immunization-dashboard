@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Select,
   SelectContent,
@@ -12,27 +12,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
 import { HealthStation } from "@/utils/types/component";
+import { useGetHealthStation } from "@/hooks/api/health-station";
+import { Spinner } from "../ui";
+import ErrorMessage from "../error-display/error-message";
 
 // Health station later to be fetched from the server with params
-const healthStation: HealthStation = {
-  id: 1,
-  name: "Jimma Health Center",
-  type: "healthcenter",
-  region: "oromia",
-  city: "Jimma",
-  zone: "Jimma",
-  subcity: "Jimma",
-  kebele: "Kochi",
-  houseNumber: "92cc1826",
-  createdDate: new Date("2021-09-01"),
-  description:
-    "This is a health center located in Jimma, Oromia giving health services to the community",
-};
 
-function EditHealthStationForm({}: {}) {
+function EditHealthStationForm() {
   const navigate = useNavigate();
 
   // Find the health station by id
+  const { isPending, hs, error } = useGetHealthStation();
+
+  if (isPending) return <Spinner />;
+
+  if (error) return <ErrorMessage error={error} />;
 
   const {
     // id,
@@ -44,7 +38,7 @@ function EditHealthStationForm({}: {}) {
     kebele,
     houseNumber,
     description,
-  } = healthStation;
+  } = hs;
 
   const handleSubmit = () => {
     // Update the health station
@@ -80,16 +74,39 @@ function EditHealthStationForm({}: {}) {
             <SelectTrigger className="col-span-3">
               <SelectValue placeholder="Choose type" />
             </SelectTrigger>
+
             <SelectContent>
-              <SelectItem value="healthcenter">Health Center</SelectItem>
-              <SelectItem value="hospital">Hospital</SelectItem>
-              <SelectItem value="clinic">Clinic</SelectItem>
+              <SelectItem value="GENERAL_HOSPITAL">General Hospital</SelectItem>
+              <SelectItem value="SPECIALTY_HOSPITAL">
+                Specialty Hospital
+              </SelectItem>
+              <SelectItem value="CLINIC">Clinic</SelectItem>
+              <SelectItem value="REHABILITATION_CENTER">
+                Rehabilitation Center
+              </SelectItem>
+              <SelectItem value="DIAGNOSTIC_CENTER">
+                Diagnostic Center
+              </SelectItem>
+              <SelectItem value="MATERNITY_HOSPITAL">
+                Maternity Hospital
+              </SelectItem>
+              <SelectItem value="PSYCHIATRIC_HOSPITAL">
+                Psychiatric Hospital
+              </SelectItem>
+              <SelectItem value="MEDICAL_LABORATORY">
+                Medical Laboratory
+              </SelectItem>
+              <SelectItem value="PHARMACY">Pharmacy</SelectItem>
+              {/* <SelectItem value="PEDIATRIC_CLINIC">Pediatric Clinic</SelectItem> */}
+              {/* <SelectItem value="SPORTS_MEDICINE_CLINIC">
+                Sports Medicine Clinic
+              </SelectItem> */}
             </SelectContent>
           </Select>
           {/* <Input id="description" className="col-span-3" /> */}
         </div>
 
-        <div className="grid grid-cols-4 items-center gap-4">
+        {/* <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="type" className="text-left">
             Health station region location
           </Label>
@@ -111,8 +128,7 @@ function EditHealthStationForm({}: {}) {
               <SelectItem value="tigrai">Tigrai</SelectItem>
             </SelectContent>
           </Select>
-          {/* <Input id="description" className="col-span-3" /> */}
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="city" className="text-left">
@@ -166,7 +182,7 @@ function EditHealthStationForm({}: {}) {
           <Textarea
             placeholder="Description..."
             className="col-span-3"
-            defaultValue={String(description)}
+            defaultValue={description || ""}
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">

@@ -9,7 +9,7 @@ function EditHealthProfessionalPage() {
         <PageHeader pageName="HealthProfessional / edit" />
 
         <div className="mx-auto w-[98%] light:bg-[#f9fafb]  dark:bg[#111827] rounded  mt-2 py-8 px-6  relative">
-          <EditHealthProfessionalForm onEdit={() => {}} />
+          <EditHealthProfessionalForm />
         </div>
       </div>
     </>

@@ -24,7 +24,7 @@ const healthProfessional = {
   position: "Medical Doctor",
 };
 
-function EditHealthProfessionalForm({ onEdit }: { onEdit: Function }) {
+function EditHealthProfessionalForm() {
   const {
     // id,
     firstName,
@@ -39,9 +39,7 @@ function EditHealthProfessionalForm({ onEdit }: { onEdit: Function }) {
   } = healthProfessional;
 
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    onEdit();
-  };
+  const handleSubmit = () => {};
 
   return (
     <div className="">

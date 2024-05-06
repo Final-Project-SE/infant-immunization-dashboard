@@ -33,6 +33,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Style imports
 import "./styles/globals.css";
 import PageNotFound from "./pages/page-not-found";
+import { Suspense } from "react";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -54,8 +55,9 @@ function App() {
               >
                 <Route index element={<Navigate to="/dashboard" />} />
                 <Route path="dashboard" element={<Dashboard />} />
+
                 <Route path="health-stations" element={<HealthStations />} />
-                <Route path="health-stations" element={<HealthStations />} />
+
                 <Route
                   path="health-stations/add"
                   element={<AddHealthStationPage />}

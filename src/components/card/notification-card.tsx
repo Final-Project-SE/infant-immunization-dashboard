@@ -34,7 +34,7 @@ const NotificaionCard = ({
           view all{" "}
         </Link>
       </div>
-      <div className="h-64 overflow-y-scroll  thin_scrollbar py-4  ">
+      <div className="notification-container h-64 overflow-y-scroll  thin_scrollbar py-4  ">
         {notifications.map((notification, index) => (
           <NotificationMessageCard
             key={index}

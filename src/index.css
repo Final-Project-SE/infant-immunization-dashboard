@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.notification-container::-webkit-scrollbar {
+  display: none;
+}
