@@ -48,16 +48,16 @@ function CreateAppointmentModal({
 
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="mother_id" className="text-left">
-              Mother ID
+            <Label htmlFor="motherEmail" className="text-left">
+              Mother email
             </Label>
-            <Input id="mother_id" className="col-span-3" />
+            <Input id="motherEmail" className="col-span-3" />
           </div>
 
           {/* date picker  */}
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="date" className="text-left">
-              Date
+              Appointment date
             </Label>
             <Input id="date" type="date" className="col-span-3" />
           </div>
