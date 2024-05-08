@@ -2,25 +2,15 @@ import { Spinner } from "@/components/ui";
 import Empty from "@/components/error-display/empty";
 import AddHealthStationForm from "@/components/form/add-health-station-form";
 import PageHeader from "@/components/header/page-header";
-import { useAddHealthStation } from '@/api/useAddHealthStation'; 
+import { useAddHealthStation } from "@/api/useAddHealthStation";
 import { HealthStation } from "@/utils/types/component";
 
 function AddHealthStationPage() {
-  const mutation = useAddHealthStation();
-
-  const handleAdd = (healthStation: HealthStation) => {
-    mutation.mutate(healthStation);
-  };
-
-  if (mutation.status === 'pending') return <Spinner />;
-
-  if (mutation.status === 'error') return <Empty resourceName="health-station" />;
-
   return (
     <div className="mx-auto w-full rounded mt-1 pb-4 h-[83vh]">
       <PageHeader pageName="products / add" />
       <div className="mx-auto w-[98%] light:bg-[#f9fafb] dark:bg[#111827] rounded mt-2 py-8 px-6 relative">
-        <AddHealthStationForm onAdd={handleAdd} />
+        <AddHealthStationForm />
       </div>
     </div>
   );

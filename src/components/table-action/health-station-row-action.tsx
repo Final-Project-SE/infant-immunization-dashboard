@@ -5,6 +5,7 @@ import { Delete } from "@mui/icons-material";
 import UpdateAdminModal from "../modal/update-admin-modal";
 import ConfirmModal from "../modal/confirm-modal";
 import { useNavigate } from "react-router-dom";
+import { useDeleteHealthStation } from "@/hooks/api/health-station";
 
 export const ViewDetailRowAction = ({ row }: { row: any }) => {
   const navigate = useNavigate();
@@ -55,13 +56,15 @@ export const DeactivateHealthStationRowAction = ({ row }: { row: any }) => {
 };
 
 export const DeleteHealthStationRowAction = ({ row }: { row: any }) => {
-  console.log(row);
+  const { deleteHs } = useDeleteHealthStation();
   return (
     <ConfirmModal
       actionName="Delete"
       title="Delete health station"
       description="Are you sure you want to delete this data permanently? This action cannot be undone"
-      onConfirm={() => {}}
+      onConfirm={() => {
+        deleteHs(row.id);
+      }}
     >
       <MenuItem
         key="delete"

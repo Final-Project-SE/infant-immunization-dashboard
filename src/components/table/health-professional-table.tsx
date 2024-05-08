@@ -13,7 +13,7 @@ import {
 import AddHealthStationToolbarAction from "../table-action/health-professional-toolbar-action";
 
 //column definitions...
-const columns: MRT_ColumnDef<HealthProfessionalProp>[] = [
+const columns: MRT_ColumnDef<any>[] = [
   {
     enableSorting: false,
     enableEditing: false,
@@ -35,7 +35,7 @@ const columns: MRT_ColumnDef<HealthProfessionalProp>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.firstName, //alternate way
+    accessorFn: (originalRow) => originalRow.profile.firstName, //alternate way
     id: "firstName", //id required if you use accessorFn instead of accessorKey
     header: "First name",
     Header: <p>First name</p>, //optional custom markup
@@ -46,12 +46,23 @@ const columns: MRT_ColumnDef<HealthProfessionalProp>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.lastName, //alternate way
-    id: "lastName", //id required if you use accessorFn instead of accessorKey
-    header: "Last name",
-    Header: <p>Last name </p>, //optional custom markup
+    accessorFn: (originalRow) => originalRow.profile.middleName, //alternate way
+    id: "middleName", //id required if you use accessorFn instead of accessorKey
+    header: "Middle name",
+    Header: <p>Middle name </p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
+  // {
+  //   enableColumnFilter: false,
+  //   enableEditing: false,
+  //   enableColumnActions: false,
+  //   enableColumnDragging: false,
+  //   accessorFn: (originalRow) => originalRow.profile.lastName, //alternate way
+  //   id: "lastName", //id required if you use accessorFn instead of accessorKey
+  //   header: "Last name",
+  //   Header: <p>Last name </p>, //optional custom markup
+  //   Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
+  // },
   {
     enableSorting: false,
     enableColumnFilter: false,
@@ -70,7 +81,7 @@ const columns: MRT_ColumnDef<HealthProfessionalProp>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.title, //alternate way
+    accessorFn: (originalRow) => originalRow.proProfile.position, //alternate way
     id: "position", //id required if you use accessorFn instead of accessorKey
     header: "Position",
     Header: <p>Position</p>, //optional custom markup
@@ -81,7 +92,7 @@ const columns: MRT_ColumnDef<HealthProfessionalProp>[] = [
 const HealthProfessionalTable = ({
   healthProfessionals,
 }: {
-  healthProfessionals: HealthProfessionalProp[];
+  healthProfessionals: any[];
 }) => {
   return (
     <Table
