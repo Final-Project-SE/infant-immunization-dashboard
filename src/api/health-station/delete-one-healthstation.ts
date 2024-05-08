@@ -3,7 +3,13 @@ import axios from "axios";
 async function deleteOneHealthStation(hsid: string | number) {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
-    const res = await axios.delete(`${config.BASE_URL}/hs/${hsid}`);
+    const res = await axios.delete(`${config.BASE_URL}/hs/${hsid}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSIiwiZmlyc3ROYW1lIjoiTmF0bmFlbCIsImlhdCI6MTcxNDk3NjQ1OCwiZXhwIjoxNzE3NTY4NDU4fQ.-1rB4Ci6hsFJ8aZVL8uVQMoQPoVMFsVC282AHmv-S8U",
+      },
+    });
     console.log(res);
 
     const healthStations = res.data;
