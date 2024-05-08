@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Vaccine } from "@/utils/types/component";
-import { createVaccine, deleteVaccine, getAllVaccines, getSingleVaccine, updateVaccine } from "@/api/vaccine";
+import { createVaccine, deleteVaccine, getAllVaccines, getSingleVaccine, updateVaccine } from "@/api/vaccine/useVaccines";
 
 export function useGetVaccines() {
   const {

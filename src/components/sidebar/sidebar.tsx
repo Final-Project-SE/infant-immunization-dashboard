@@ -77,6 +77,11 @@ const Menu = () => {
       href: "/children",
     },
     {
+      icon: <RiSpeakLine />,
+      title: "Vaccines",
+      href: "/vaccines",
+    },
+    {
       icon: <GrUserAdmin />,
       title: "Admins",
       href: "/admins",
