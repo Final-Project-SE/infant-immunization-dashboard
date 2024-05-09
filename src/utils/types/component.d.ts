@@ -87,11 +87,16 @@ export type Mother = {
 
 export type Child = {
   id: number;
-  mother: Mother;
+
   firstName: string;
-  lastName: string;
   middleName: string;
-  birthDate: Date;
+  lastName: string;
+
+  isVaccineCompleted: string;
+  motherFullName: string;
+  // motherFirstName: string;
+  // motherMiddleName: string;
+  // motherLastName: string;
 };
 
 export type Vaccine = {

@@ -18,7 +18,7 @@ const columns: MRT_ColumnDef<Child>[] = [
     enableColumnActions: false,
     enableColumnDragging: false,
     enableGlobalFilter: true,
-    header: "Child ID",
+    header: "ID",
     accessorFn: (originalRow) => originalRow.id,
     enableHiding: false,
     Cell: ({ cell }) => (
@@ -43,17 +43,6 @@ const columns: MRT_ColumnDef<Child>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.lastName,
-    id: "lastName",
-    header: "Last name",
-    Header: <p>Last name</p>,
-    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>,
-  },
-  {
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
-    enableColumnDragging: false,
     accessorFn: (originalRow) => originalRow.middleName,
     id: "middleName",
     header: "Middle name",
@@ -61,16 +50,39 @@ const columns: MRT_ColumnDef<Child>[] = [
     Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>,
   },
   {
+    enableColumnFilter: false,
+    enableEditing: false,
+    enableColumnActions: false,
+    enableColumnDragging: false,
+    accessorFn: (originalRow) => originalRow.lastName,
+    id: "lastName",
+    header: "Last name",
+    Header: <p>Last name</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>,
+  },
+
+  {
     enableSorting: false,
     enableColumnFilter: false,
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.birthDate,
-    id: "birthDate",
-    header: "Birth date",
-    Header: <p>Birth date</p>,
-    Cell: ({ cell }) => <p>{cell.getValue<Date>().toLocaleString()}</p>,
+    accessorFn: (originalRow) => originalRow.isVaccineCompleted,
+    id: "isVaccineCompleted",
+    header: "Vacc. Completed",
+    Header: <p>Vacc. Completed</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<Boolean>().toLocaleString()}</p>,
+  },
+  {
+    enableColumnFilter: false,
+    enableEditing: false,
+    enableColumnActions: false,
+    enableColumnDragging: false,
+    accessorFn: (originalRow) => originalRow.motherFullName,
+    id: "motherFullName",
+    header: "Mother name",
+    Header: <p>Mother name</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>,
   },
 ];
 
@@ -79,11 +91,7 @@ const ChildrenTable = ({ children }: { children: Child[] }) => {
     <Table
       columnDefinition={columns as any}
       data={children}
-      RowActions={[
-        ViewDetailAction,
-        UpdateChildAction,
-        DeleteChildAction,
-      ]}
+      RowActions={[ViewDetailAction, UpdateChildAction, DeleteChildAction]}
     />
   );
 };

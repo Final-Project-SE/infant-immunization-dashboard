@@ -7,7 +7,7 @@ async function getChildren() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6IlJFQ0VQVElPTiIsImZpcnN0TmFtZSI6IlRheWUiLCJpYXQiOjE3MTUxMDk4MzZ9.Hfo9g_O4j4bft15TfJ6VsW0upp6KscKcDIVsOsxoWGI",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Ik1BTkFHRVIiLCJmaXJzdE5hbWUiOiJBbWFudWVsIiwiaWF0IjoxNzExNzQxMjYwfQ.0GlbjQiJza4D0i9MH4iUA9woBlRe5Rtc3opIvc4QZxE",
       },
     });
 
