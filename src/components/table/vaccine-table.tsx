@@ -25,7 +25,7 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     enableHiding: false,
     Cell: ({ value }) => (
       <p style={{ fontWeight: "bold" }}>
-        {typeof value === 'number' ? value.toLocaleString() : value}
+        {value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}
       </p>
     ),
   },
@@ -38,7 +38,7 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     id: "name",
     header: "Vaccine name",
     Header: <p>Vaccine name</p>,
-    Cell: ({ value }) => <p>{typeof value === 'number' ? value.toLocaleString() : value}</p>,
+    Cell: ({ value }) => <p>{value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}</p>,
   },
   {
     enableColumnFilter: false,
@@ -49,7 +49,7 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     id: "type",
     header: "Type",
     Header: <p>Type </p>,
-    Cell: ({ value }) => <p>{typeof value === 'number' ? value.toLocaleString() : value}</p>,
+    Cell: ({ value }) => <p>{value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}</p>,
   },
   // Add more columns as per your requirements...
 ];
