@@ -6,6 +6,6 @@ export default function useChildren() {
   return useQuery({
     queryKey: ['childrenData'],
     queryFn: () =>
-      axios.get(`${config.BASE_URL}/children/`).then((res) => res.data),
+      axios.get(`${config.BASE_URL}/child/`).then((res) => res.data),
   });
 }
