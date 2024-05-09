@@ -1,13 +1,15 @@
 import config from "@/configs/config";
 import axios from "axios";
-async function deleteOneHealthStation(hsid: string | number) {
+
+async function getMothers() {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
-    const res = await axios.delete(`${config.BASE_URL}/hs/${hsid}`, {
+    const res = await axios.get(`${config.BASE_URL}/user/mother/hs/my`, {
       headers: {
         "Content-Type": "application/json",
+        // later to be obtained from local storage
         Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSIiwiZmlyc3ROYW1lIjoiTmF0bmFlbCIsImlhdCI6MTcxNDk3NjQ1OCwiZXhwIjoxNzE3NTY4NDU4fQ.-1rB4Ci6hsFJ8aZVL8uVQMoQPoVMFsVC282AHmv-S8U",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6IlJFQ0VQVElPTiIsImZpcnN0TmFtZSI6IlRheWUiLCJpYXQiOjE3MTUxMDk4MzZ9.Hfo9g_O4j4bft15TfJ6VsW0upp6KscKcDIVsOsxoWGI",
       },
     });
     console.log(res);
@@ -23,4 +25,4 @@ async function deleteOneHealthStation(hsid: string | number) {
   }
 }
 
-export default deleteOneHealthStation;
+export default getMothers;

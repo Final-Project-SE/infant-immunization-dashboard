@@ -10,15 +10,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Form } from "@/components/ui/form";
 import { Textarea } from "../ui/textarea";
 import { useCreateHealthStation } from "@/hooks/api/health-station";
 
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import CreateHealthStation from "@/api/health-station/create-healthstation";
+import { useEffect, useState } from "react";
 function AddHealthStationForm() {
   const navigate = useNavigate();
 
-  const { register, formState, getValues, handleSubmit, reset } = useForm();
+  const { register, formState, handleSubmit, reset, watch } = useForm();
 
   const { isPending, createHs } = useCreateHealthStation();
 
@@ -26,14 +28,17 @@ function AddHealthStationForm() {
 
   console.log(errors);
 
-  // const { isPending, createHs, error } = useCreateHealthStation();
+  // hs type
+  const [type, setType] = useState("GENERAL_HOSPITAL");
+  console.log(type);
+
+  // useEffect(() => {
+  //   console.log(watchType);
+  // }, [watchType]);
+
   const onSubmit = (data: any) => {
-    console.log(data);
-
-    // await CreateHealthStation(data);
-
     createHs(
-      { ...data, imageUrl: "image" },
+      { ...data, type: type, imageUrl: "image" },
       {
         onSuccess: () => {
           reset();
@@ -102,6 +107,61 @@ function AddHealthStationForm() {
             <Label htmlFor="type" className="text-left">
               Health station type
             </Label>
+            <Select
+              // name="type"
+              defaultValue="GENERAL_HOSPITAL"
+              onValueChange={(value) => {
+                setType(value);
+                console.log(value);
+              }}
+              // {...register("type", { required: "This field is required" })}
+              // {...register("type", { required: "This field is required" })}
+            >
+              <SelectTrigger className="col-span-3">
+                <SelectValue
+                  placeholder="Choose type"
+                  // {...register("type", {
+                  //   required: "This field is required",
+                  // })}
+                />
+              </SelectTrigger>
+
+              <SelectContent>
+                <SelectItem value="GENERAL_HOSPITAL">
+                  General Hospital
+                </SelectItem>
+                <SelectItem value="SPECIALTY_HOSPITAL">
+                  Specialty Hospital
+                </SelectItem>
+                <SelectItem value="CLINIC">Clinic</SelectItem>
+                <SelectItem value="REHABILITATION_CENTER">
+                  Rehabilitation Center
+                </SelectItem>
+                <SelectItem value="DIAGNOSTIC_CENTER">
+                  Diagnostic Center
+                </SelectItem>
+                <SelectItem value="MATERNITY_HOSPITAL">
+                  Maternity Hospital
+                </SelectItem>
+                <SelectItem value="PSYCHIATRIC_HOSPITAL">
+                  Psychiatric Hospital
+                </SelectItem>
+                <SelectItem value="MEDICAL_LABORATORY">
+                  Medical Laboratory
+                </SelectItem>
+                <SelectItem value="PHARMACY">Pharmacy</SelectItem>
+                {/* <SelectItem value="PEDIATRIC_CLINIC">Pediatric Clinic</SelectItem> */}
+                {/* <SelectItem value="SPORTS_MEDICINE_CLINIC">
+                Sports Medicine Clinic
+              </SelectItem> */}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="type" className="text-left">
+              Health station type
+            </Label>
             <select
               className="col-span-3"
               {...register("type")}
@@ -110,7 +170,7 @@ function AddHealthStationForm() {
               <option value="GENERAL_HOSPITAL">Hosp</option>
               <option value="private">Private</option>
             </select>
-          </div>
+          </div> */}
 
           {/* <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="type" className="text-left">
@@ -165,7 +225,9 @@ function AddHealthStationForm() {
                 type="string"
                 className="col-span-3"
                 disabled={isPending}
-                {...register("subcity", { required: "This field is required" })}
+                {...register("subcity", {
+                  required: "This field is required",
+                })}
               />
             </div>
             {errors?.subcity?.message && (
@@ -184,7 +246,9 @@ function AddHealthStationForm() {
                 type="string"
                 className="col-span-3"
                 disabled={isPending}
-                {...register("kebele", { required: "This field is required" })}
+                {...register("kebele", {
+                  required: "This field is required",
+                })}
               />
             </div>
             {errors?.kebele?.message && (

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useTheme } from "../theme-provider/theme-provider";
 import { RiSpeakLine } from "react-icons/ri";
 
-import { FaChildren } from "react-icons/fa6";
+import { FaChildren, FaUserDoctor } from "react-icons/fa6";
 import { WiTime7 } from "react-icons/wi";
 
 const Logo = () => {
@@ -53,6 +53,11 @@ const Menu = () => {
       icon: <BsHospital />,
       title: "Health stations",
       href: "/health-stations",
+    },
+    {
+      icon: <FaUserDoctor />,
+      title: "Health Profs",
+      href: "/health-professionals",
     },
     {
       // icon: <TbDeviceAnalytics />,

@@ -22,7 +22,7 @@ const columns: MRT_ColumnDef<Appointment>[] = [
     enableColumnActions: false,
     enableColumnDragging: false,
     enableGlobalFilter: true,
-    header: "App. ID",
+    header: "ID",
     accessorFn: (originalRow) => originalRow.id, //alternate way
     enableHiding: false, //disable a feature for this column
     Cell: ({ cell }) => (
@@ -36,32 +36,22 @@ const columns: MRT_ColumnDef<Appointment>[] = [
     enableColumnFilter: true,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.motherFirstName, //alternate way
+    accessorFn: (originalRow) => originalRow.motherFullName, //alternate way
     id: "motherName", //id required if you use accessorFn instead of accessorKey
     header: "Mother name",
     Header: <p>Mother name</p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
-  {
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
-    enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.motherLastName, //alternate way
-    id: "motherLastName", //id required if you use accessorFn instead of accessorKey
-    header: "Mother name",
-    Header: <p>Last name</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
-  },
+
   {
     enableSorting: true,
     enableColumnFilter: true,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.healthProfessionalName, //alternate way
-    id: "healthProfessionalName", //id required if you use accessorFn instead of accessorKey
-    header: "Health Pr. Name ",
-    Header: <p>Health Pr. Name </p>, //optional custom markup
+    accessorFn: (originalRow) => originalRow.healthProfessionalFullName, //alternate way
+    id: "healthProfessionalFirstName", //id required if you use accessorFn instead of accessorKey
+    header: "HP Name ",
+    Header: <p>HP Name </p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
 

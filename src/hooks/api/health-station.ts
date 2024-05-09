@@ -55,7 +55,11 @@ export function useCreateHealthStation() {
     },
     onError: (err) => {
       console.log(err);
-      toast.error(err.message);
+      toast.error(
+        err.message ||
+          err.stack ||
+          "There was an error while creating health station"
+      );
     },
   });
 
@@ -64,15 +68,15 @@ export function useCreateHealthStation() {
 
 export function useUpdateHealthStation() {
   const queryClient = useQueryClient();
-  const { id } = useParams();
-  console.log(id);
+
   const {
     isPending,
     // data: hs,
     mutate: updateHs,
     error,
   } = useMutation({
-    mutationFn: updateHealthStation as any,
+    mutationFn: ({ id, data }: { id: any; data: any }) =>
+      updateHealthStation(id, data) as any,
     onSuccess: () => {
       //   console.log(data);
       toast.success(`Health station succesfully updated`);
@@ -91,15 +95,14 @@ export function useUpdateHealthStation() {
 
 export function useDeleteHealthStation() {
   const queryClient = useQueryClient();
-  const { id } = useParams();
-  console.log(id);
+
   const {
     isPending,
     // data: hs,
     mutate: deleteHs,
     error,
   } = useMutation({
-    mutationFn: () => deleteOneHealthStation(id as any),
+    mutationFn: (id) => deleteOneHealthStation(id as any),
     onSuccess: () => {
       //   console.log(data);
       toast.success(`Health station succesfully deleted`);

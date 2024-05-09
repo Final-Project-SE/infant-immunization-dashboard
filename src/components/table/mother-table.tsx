@@ -11,7 +11,7 @@ import {
 } from "../table-action/mother-table-row-actions";
 
 //column definitions...
-const columns: MRT_ColumnDef<Mother>[] = [
+const columns: MRT_ColumnDef<any>[] = [
   {
     enableSorting: false,
     enableEditing: false,
@@ -33,7 +33,7 @@ const columns: MRT_ColumnDef<Mother>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.firstName, //alternate way
+    accessorFn: (originalRow) => originalRow.profile.firstName, //alternate way
     id: "firstName", //id required if you use accessorFn instead of accessorKey
     header: "First name",
     Header: <p>First name</p>, //optional custom markup
@@ -44,7 +44,7 @@ const columns: MRT_ColumnDef<Mother>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.lastName, //alternate way
+    accessorFn: (originalRow) => originalRow.profile.lastName, //alternate way
     id: "lastName", //id required if you use accessorFn instead of accessorKey
     header: "lastName",
     Header: <p>Last name </p>, //optional custom markup
@@ -55,7 +55,7 @@ const columns: MRT_ColumnDef<Mother>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.middleName, //alternate way
+    accessorFn: (originalRow) => originalRow.profile.middleName, //alternate way
     id: "middleName", //id required if you use accessorFn instead of accessorKey
     header: "middleName",
     Header: <p>Middle name </p>, //optional custom markup
@@ -87,7 +87,7 @@ const columns: MRT_ColumnDef<Mother>[] = [
   },
 ];
 
-const MotherTable = ({ mothers }: { mothers: Mother[] }) => {
+const MotherTable = ({ mothers }: { mothers: any[] }) => {
   return (
     <Table
       columnDefinition={columns as any}

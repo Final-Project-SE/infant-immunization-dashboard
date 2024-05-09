@@ -1,12 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import config from "@/configs/config";
+import { useQuery } from "@tanstack/react-query";
 
-export default function useHealthProfessionals() {
-  return useQuery({
-    queryKey: ['healthProfessionalsData'],
-    
-    queryFn: () =>
-      axios.get(`${config.BASE_URL}/health-professionals`).then((res) => res.data),
+import getAllHealthProfessionals from "./health-professional/get-all-health-professionals";
+
+export default function useGetHealthProfessionals() {
+  const {
+    isPending,
+    data: hp,
+    error,
+  } = useQuery({
+    queryKey: ["hp"],
+    queryFn: getAllHealthProfessionals,
   });
+
+  return { isPending, hp, error };
 }

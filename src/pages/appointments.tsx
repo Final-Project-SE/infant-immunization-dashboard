@@ -5,14 +5,52 @@ import { Spinner } from "@/components/ui";
 import Empty from "@/components/error-display/empty";
 import { Appointment } from "@/utils/types/component";
 
+const appointments: Appointment[] = [
+  {
+    id: 1,
+    // motherFirstName: "Jane",
+    // motherLastName: "Doe",
+    // motherMiddleName: "Doe",
+    motherFullName: "Jane Doe",
+    healthProfessionalFullName: "John Doe",
 
+    visitDate: new Date(),
+    fromTime: "10:00",
+    toTime: "11:00",
+    visitTimeInterval: "10:00 - 11:00",
+    status: "pending",
+  },
+  {
+    id: 2,
+    motherFullName: "Jane Doe",
+    healthProfessionalFullName: "John Doe",
+
+    visitDate: new Date(),
+    fromTime: "10:00",
+    toTime: "11:00",
+    visitTimeInterval: "10:00 - 11:00",
+    status: "pending",
+  },
+  {
+    id: 3,
+
+    motherFullName: "Jane Doe",
+    healthProfessionalFullName: "John Doe",
+
+    visitDate: new Date(),
+    fromTime: "10:00",
+    toTime: "11:00",
+    visitTimeInterval: "10:00 - 11:00",
+    status: "pending",
+  },
+];
 
 function AppointmentsPage() {
-  const { isFetching, error, data: appointments } = useAppointments();
+  // const { isFetching, error, data: appointments } = useAppointments();
 
-  if (isFetching) return <Spinner/>;
+  // if (isFetching) return <Spinner/>;
 
-  if (error) return <Empty resourceName="appointments" />;
+  // if (error) return <Empty resourceName="appointments" />;
   return (
     <div className="mx-auto w-full bg-muted rounded  mt-1 pb-4 ">
       <PageHeader pageName="Appointments" />

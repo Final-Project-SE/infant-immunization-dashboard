@@ -4,6 +4,7 @@ import { Delete } from "@mui/icons-material";
 
 import ConfirmModal from "../modal/confirm-modal";
 import { useNavigate } from "react-router-dom";
+import { useDeleteHP } from "@/hooks/api/health-professional";
 
 export const UpdateHealthProfessionalAction = ({ row }: { row: any }) => {
   const navigate = useNavigate();
@@ -18,13 +19,9 @@ export const UpdateHealthProfessionalAction = ({ row }: { row: any }) => {
   );
 };
 
-export const DeleteHealthProfessionalAction = ({
-  row,
-  onConfirm,
-}: {
-  row: any;
-  onConfirm: Function;
-}) => {
+export const DeleteHealthProfessionalAction = ({ row }: { row: any }) => {
+  const { deleteHP } = useDeleteHP();
+
   console.log(row);
   return (
     <ConfirmModal
@@ -32,7 +29,7 @@ export const DeleteHealthProfessionalAction = ({
       title="Delete health professional"
       description="Are you sure you want to delete this health professional data permanently? This action cannot be undone."
       onConfirm={() => {
-        onConfirm();
+        deleteHP(row.id);
       }}
     >
       <MenuItem
