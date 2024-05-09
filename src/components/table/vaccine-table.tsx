@@ -56,12 +56,13 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.dose,
-    id: "dosage",
-    header: "Dosage",
-    Header: <p>Dosage</p>,
-    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
+    accessorFn: (originalRow) => originalRow.type,
+    id: "type",
+    header: "Type",
+    Header: <p>Type </p>,
+    Cell: ({ value }) => <p>{value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}</p>,
   },
+  // Add more columns as per your requirements...
 ];
 
 const VaccineTable = ({ vaccines }: { vaccines: Vaccine[] }) => {

@@ -29,7 +29,7 @@ async function deleteNews(id: string | number) {
 
 async function getAllNews() {
   try {
-    const res = await axios.get(`${config.BASE_URL}/news/all`);
+    const res = await axios.get(`${config.BASE_URL}/news/`);
     return res.data;
   } catch (error: any) {
     const errorMsg = error.response ? error.response.data.message : error.message;
