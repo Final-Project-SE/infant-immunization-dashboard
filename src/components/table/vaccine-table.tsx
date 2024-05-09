@@ -54,11 +54,7 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
   // Add more columns as per your requirements...
 ];
 
-const VaccineTable = ({
-  vaccines,
-}: {
-  vaccines: Vaccine[];
-}) => {
+const VaccineTable = ({ vaccines }: { vaccines: Vaccine[] }) => {
   console.log(vaccines);
   return (
     <Table

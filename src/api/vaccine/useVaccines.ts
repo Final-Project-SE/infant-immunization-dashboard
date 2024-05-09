@@ -12,7 +12,9 @@ async function createVaccine(vaccine: Vaccine) {
     });
     return res.data;
   } catch (error: any) {
-    const errorMsg = error.response ? error.response.data.message : error.message;
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
     throw new Error(errorMsg);
   }
 }
@@ -22,7 +24,9 @@ async function deleteVaccine(id: string | number) {
     const res = await axios.delete(`${config.BASE_URL}/vaccine/${id}`);
     return res.data;
   } catch (error: any) {
-    const errorMsg = error.response ? error.response.data.message : error.message;
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
     throw new Error(errorMsg);
   }
 }
@@ -32,7 +36,9 @@ async function getAllVaccines() {
     const res = await axios.get(`${config.BASE_URL}/vaccine/all`);
     return res.data;
   } catch (error: any) {
-    const errorMsg = error.response ? error.response.data.message : error.message;
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
     throw new Error(errorMsg);
   }
 }
@@ -42,7 +48,9 @@ async function getSingleVaccine(id: string | number) {
     const res = await axios.get(`${config.BASE_URL}/vaccine/${id}`);
     return res.data;
   } catch (error: any) {
-    const errorMsg = error.response ? error.response.data.message : error.message;
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
     throw new Error(errorMsg);
   }
 }
@@ -57,9 +65,17 @@ async function updateVaccine(id: string | number, vaccine: Vaccine) {
     });
     return res.data;
   } catch (error: any) {
-    const errorMsg = error.response ? error.response.data.message : error.message;
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
     throw new Error(errorMsg);
   }
 }
 
-export { createVaccine, deleteVaccine, getAllVaccines, getSingleVaccine, updateVaccine };
+export {
+  createVaccine,
+  deleteVaccine,
+  getAllVaccines,
+  getSingleVaccine,
+  updateVaccine,
+};
