@@ -21,11 +21,11 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     enableColumnDragging: false,
     enableGlobalFilter: true,
     header: "Vaccine ID",
-    accessorFn: (originalRow) => originalRow.id,
-    enableHiding: false,
-    Cell: ({ value }) => (
+    accessorFn: (originalRow) => originalRow.id, //alternate way
+    enableHiding: false, //disable a feature for this column
+    Cell: ({ cell }) => (
       <p style={{ fontWeight: "bold" }}>
-        {value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}
+        {cell.getValue<number>().toLocaleString()}
       </p>
     ),
   },
@@ -38,27 +38,37 @@ const columns: MRT_ColumnDef<Vaccine>[] = [
     id: "name",
     header: "Vaccine name",
     Header: <p>Vaccine name</p>,
-    Cell: ({ value }) => <p>{value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
   {
     enableColumnFilter: false,
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.type,
-    id: "type",
-    header: "Type",
-    Header: <p>Type </p>,
-    Cell: ({ value }) => <p>{value !== undefined && value !== null ? (typeof value === 'number' ? value.toLocaleString() : value) : ''}</p>,
+    accessorFn: (originalRow) => originalRow.category,
+    id: "category",
+    header: "Category",
+    Header: <p>Category</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
-  // Add more columns as per your requirements...
+  {
+    enableColumnFilter: false,
+    enableEditing: false,
+    enableColumnActions: false,
+    enableColumnDragging: false,
+    accessorFn: (originalRow) => originalRow.dose,
+    id: "dosage",
+    header: "Dosage",
+    Header: <p>Dosage</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
+  },
 ];
 
 const VaccineTable = ({ vaccines }: { vaccines: Vaccine[] }) => {
   console.log(vaccines);
   return (
     <Table
-      columnDefinition={columns}
+      columnDefinition={columns as any}
       data={vaccines}
       RowActions={[
         ViewDetailRowAction,

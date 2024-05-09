@@ -8,6 +8,7 @@ import ErrorMessage from "@/components/error-display/error-message";
 
 function Vaccines() {
   const { isPending, error, vaccines } = useGetVaccines();
+  console.log(vaccines);
 
   if (isPending) return <Spinner />;
 

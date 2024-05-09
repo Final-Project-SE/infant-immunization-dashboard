@@ -97,12 +97,17 @@ export type Child = {
 export type Vaccine = {
   id: number;
   name: string;
-  description: string;
-  dosage: string;
+  category: string;
+
+  description?: string;
+  dose: number;
+  duration: number;
+  createdAt?: Date;
   ageRange: string;
-  dosageType: string;
-  duration: string;
-  createdDate: Date;
+  // dosage: string;
+  // dosageType: string;
+  // duration: string;
+  // createdDate: Date;
 };
 
 export type Certificate = {
