@@ -33,7 +33,7 @@ async function deleteVaccine(id: string | number) {
 
 async function getAllVaccines() {
   try {
-    const res = await axios.get(`${config.BASE_URL}/vaccine/all`);
+    const res = await axios.get(`${config.BASE_URL}/vaccine/`);
     return res.data;
   } catch (error: any) {
     const errorMsg = error.response
