@@ -11,7 +11,7 @@ async function createVaccine(vaccine: Vaccine) {
       },
     });
     return res.data;
-  } catch (error: any) {
+  } catch (error:any) {
     const errorMsg = error.response
       ? error.response.data.message
       : error.message;
