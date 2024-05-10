@@ -162,6 +162,7 @@ export type News = {
   description: string;
   imageUrl: string;
   createdDate: Date;
+
 };
 
 export type Report = {
