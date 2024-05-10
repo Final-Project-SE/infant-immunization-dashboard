@@ -1,3 +1,5 @@
+import { UserModel } from "./api";
+
 export type CreateHealthStationDto = {
   name: string;
   type: string;
@@ -204,3 +206,14 @@ export type HealthProfessionalProp = {
 };
 
 type Gender = "male" | "female";
+
+export type AuthState = {
+  isAuthenticated: boolean;
+  user: UserModel | null;
+  accessToken: string | null;
+};
+
+export interface Auth {
+  token: string | null;
+  data: UserModel | null;
+}
