@@ -92,7 +92,8 @@ function App() {
               </Route>
             ) : (
               // redirect to login page if not authenticated
-              <Route path="*" element={<Navigate to="/login" />} />
+              // <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="news" element={<News />} />
             )}
             <Route path="*" element={<PageNotFound />} />
           </Routes>

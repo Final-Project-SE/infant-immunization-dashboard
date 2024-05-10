@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "@/features/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 function LoginForm() {
   const push = useNavigate();
@@ -31,12 +31,12 @@ function LoginForm() {
           accessToken: res.data.token,
         })
       );
-      toast.success("Login successful");
+      // toast.success("Login successful");
       push("/dashboard");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
-      toast.error("Invalid email or password");
+      // toast.error("Invalid email or password");
       setIsLoading(false);
     }
   });

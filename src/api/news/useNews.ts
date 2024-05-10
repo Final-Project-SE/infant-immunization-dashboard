@@ -3,8 +3,9 @@ import axios from "axios";
 import { News } from "@/utils/types/component";
 
 async function createNews(news: News) {
+  console.log('Sending the following data:', news);
   try {
-    const res = await axios.post(`${config.BASE_URL}/news`, news, {
+    const res = await axios.post(`${config.BASE_URL}/news/`, news, {
       headers: {
         "Content-Type": "application/json",
         Authorization: config.AUTH_TOKEN,
@@ -12,6 +13,7 @@ async function createNews(news: News) {
     });
     return res.data;
   } catch (error: any) {
+    console.error('Received the following error:', error.response ? error.response.data : error.message);
     const errorMsg = error.response ? error.response.data.message : error.message;
     throw new Error(errorMsg);
   }
@@ -61,5 +63,4 @@ async function updateNews(id: string | number, news: News) {
     throw new Error(errorMsg);
   }
 }
-
 export { createNews, deleteNews, getAllNews, getSingleNews, updateNews };
