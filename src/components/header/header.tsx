@@ -44,13 +44,15 @@ const Header = () => {
             handleDisplaySidebar();
           }}
         />
-        <div className="font-bold uppercase tracking-wide ">page name</div>
+        <div className="font-bold uppercase tracking-wide ">
+          Infant Immunization
+        </div>
       </div>
       <div className="right-bar flex gap-3 px-2">
         <IconContainer
           Icon={IoMdNotificationsOutline}
           hasLabel
-          labelValue={5}
+          labelValue={null}
           handler={(e: any) => {
             e.stopPropagation();
             setShowMenu(false);
@@ -80,9 +82,11 @@ const Header = () => {
               "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             }
             alt="admin image"
-            className="aspect-[1/1] w-8 rounded-full "
+            className="aspect-[1/1] w-8 rounded-full cursor-pointer "
           />
-          <p className="font-semibold capitalize text-foreground/80">Natnael</p>
+          <p className="font-semibold capitalize text-foreground/80 cursor-pointer">
+            Natnael
+          </p>
         </div>
       </div>
     </header>
