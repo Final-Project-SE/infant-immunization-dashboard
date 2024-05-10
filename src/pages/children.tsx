@@ -11,6 +11,7 @@ function ChildrenPage() {
   if (isPending) return <Spinner />;
 
   if (error) return <Empty resourceName="children" />;
+  console.log(children);
 
   const formattedChildren: Child[] = children.map((child: any) => {
     return {
