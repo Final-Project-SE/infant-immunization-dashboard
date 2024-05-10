@@ -51,11 +51,9 @@ export type Admin = {
   lastName: string;
   email: string;
   phone?: string;
-  password?: string;
   role: string;
-  otp?: string;
-  activeStatus: string;
-  createdDate?: Date;
+  activeStatus: Boolean;
+  imageUrl?: string;
 };
 
 export type UserProfile = {
