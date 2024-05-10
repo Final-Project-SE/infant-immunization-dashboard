@@ -20,3 +20,12 @@ export interface Admin {
   activeStatus: string;
   createdDate?: Date;
 }
+
+
+export interface UserModel {
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  imageUrl: string;
+}
