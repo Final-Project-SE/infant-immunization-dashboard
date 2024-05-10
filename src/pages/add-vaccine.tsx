@@ -1,9 +1,7 @@
-import { Spinner } from "@/components/ui";
-import Empty from "@/components/error-display/empty";
+
 import AddVaccineForm from "@/components/form/add-vaccine-form";
 import PageHeader from "@/components/header/page-header";
-import { useAddVaccine } from "@/api/useAddVaccine";
-import { Vaccine } from "@/utils/types/component";
+
 
 function AddVaccinePage() {
   return (
