@@ -25,7 +25,7 @@ export function useGetSingleNews() {
     error,
   } = useQuery<News>({
     queryKey: ["singleNewsData", id],
-    queryFn: () => getSingleNews(id as any),
+    queryFn: () => getSingleNews(id as string),
   });
 
   return { isPending, error, news };
@@ -62,14 +62,14 @@ export function useUpdateNews() {
     mutate: update,
     error,
   } = useMutation({
-    mutationFn: (data: News) => updateNews(id as any, data),
+    mutationFn: (data: News) => updateNews(id as string, data), // Update the type of 'id' to 'string'
     onSuccess: () => {
       toast.success(`News successfully updated`);
       queryClient.invalidateQueries({
         queryKey: ["newsData"],
       });
     },
-    onError: (err) => {
+    onError: () => { // Remove the unused parameter 'err'
       toast.error(`There was an error while editing news`);
     },
   });
@@ -85,14 +85,14 @@ export function useDeleteNews() {
     mutate: remove,
     error,
   } = useMutation({
-    mutationFn: () => deleteNews(id as any),
+    mutationFn: () => deleteNews(id as string), // Update the type of 'id' to 'string'
     onSuccess: () => {
       toast.success(`News successfully deleted`);
       queryClient.invalidateQueries({
         queryKey: ["newsData"],
       });
     },
-    onError: (err) => {
+    onError: () => { // Remove the unused parameter 'err'
       toast.error(`There was an error while deleting news`);
     },
   });
