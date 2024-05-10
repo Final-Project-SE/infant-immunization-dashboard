@@ -22,7 +22,6 @@ import AppointmentsPage from "./pages/appointments";
 import Login from "./pages/login";
 
 // State management imports
-import { StateProvider } from "./store/provider";
 
 // Theme related imports
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
@@ -33,20 +32,23 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Style imports
 import "./styles/globals.css";
 import PageNotFound from "./pages/page-not-found";
-import { Suspense } from "react";
 import Children from "./pages/children";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "./features/authSlice";
 
 // Create a client
 const queryClient = new QueryClient();
 
 function App() {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <StateProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <BrowserRouter>
-            <Routes>
-              <Route path="login" element={<Login />} />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <BrowserRouter>
+          <Routes>
+            <Route path="login" element={<Login />} />
+            {isAuthenticated ? (
               <Route
                 element={
                   // <ProtectedRoute>
@@ -88,11 +90,14 @@ function App() {
                 <Route path="news" element={<News />} />
                 <Route path="reports" element={<Reports />} />
               </Route>
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </ThemeProvider>
-      </StateProvider>
+            ) : (
+              // redirect to login page if not authenticated
+              <Route path="*" element={<Navigate to="/login" />} />
+            )}
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
 
       <Toaster
         position="top-center"
