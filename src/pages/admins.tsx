@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import PageHeader from "@/components/header/page-header";
 import AdminTable from "@/components/table/admin-table";
 import { Admin } from "@/utils/types/component";
@@ -9,11 +8,11 @@ import Empty from "@/components/error-display/empty";
 
 const Admins: React.FC = () => {
   const { isFetching, error, data: admins } = useAdmins();
+  console.log(admins);
 
   if (isFetching) return <Spinner />;
 
-if (error) return <Empty resourceName="admins" />;
-
+  if (error) return <Empty resourceName="admins" />;
 
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4 ">
@@ -23,6 +22,6 @@ if (error) return <Empty resourceName="admins" />;
       </div>
     </div>
   );
-}
+};
 
 export default Admins;
