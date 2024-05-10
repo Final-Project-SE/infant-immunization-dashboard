@@ -1,5 +1,3 @@
-
-
 import { type MRT_ColumnDef } from "material-react-table";
 
 import Table from "../ui/table";
@@ -19,7 +17,7 @@ const columns: MRT_ColumnDef<Admin>[] = [
     enableColumnActions: false,
     enableColumnDragging: false,
     enableGlobalFilter: true,
-    header: "Admin ID",
+    header: "ID",
     accessorFn: (originalRow) => originalRow.id, //alternate way
     enableHiding: false, //disable a feature for this column
     Cell: ({ cell }) => (
@@ -48,7 +46,7 @@ const columns: MRT_ColumnDef<Admin>[] = [
     id: "lastName", //id required if you use accessorFn instead of accessorKey
     header: "lastName",
     Header: <p>Last name </p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
   {
     enableSorting: false,
@@ -60,19 +58,32 @@ const columns: MRT_ColumnDef<Admin>[] = [
     id: "email", //id required if you use accessorFn instead of accessorKey
     header: "Email",
     Header: <p>Email</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
   {
     enableSorting: false,
-    enableColumnFilter: false,
-    enableEditing: false,
+    enableColumnFilter: true,
+    enableEditing: true,
     enableColumnActions: false,
     enableColumnDragging: false,
     accessorFn: (originalRow) => originalRow.role, //alternate way
     id: "role", //id required if you use accessorFn instead of accessorKey
     header: "Role",
     Header: <p>Role</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
+  },
+
+  {
+    enableSorting: false,
+    enableColumnFilter: true,
+    enableEditing: true,
+    enableColumnActions: false,
+    enableColumnDragging: false,
+    accessorFn: (originalRow) => originalRow.activeStatus, //alternate way
+    id: "activeStatus", //id required if you use accessorFn instead of accessorKey
+    header: "Status",
+    Header: <p>Status</p>, //optional custom markup
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
 ];
 

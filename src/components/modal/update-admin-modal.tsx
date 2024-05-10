@@ -8,6 +8,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -71,23 +78,17 @@ function UpdateAdminModal({
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email" className="text-left">
-              Email
-            </Label>
-            <Input id="email" className="col-span-3" defaultValue={email} />
+            <Label htmlFor="status">Status</Label>
+            <Select defaultValue="ACTIVE">
+              <SelectTrigger className="col-span-3">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ACTIVE">Active</SelectItem>
+                <SelectItem value="INACTIVE">Inactive</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-          {/* <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="password" className="text-left">
-              Password
-            </Label>
-            <Input id="password" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="confirm_password" className="text-left">
-              Confirm password
-            </Label>
-            <Input id="confirm_password" className="col-span-3" />
-          </div> */}
         </div>
         <DialogFooter>
           <div className="flex justify-end gap-2">

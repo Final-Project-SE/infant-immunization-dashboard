@@ -41,9 +41,9 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>, //optional custom cell render
   },
   {
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
+    enableColumnFilter: true,
+    enableEditing: true,
+    enableColumnActions: true,
     enableColumnDragging: false,
     accessorFn: (originalRow) => originalRow.type, //alternate way
     id: "type", //id required if you use accessorFn instead of accessorKey
@@ -53,8 +53,8 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
   },
 
   {
-    enableSorting: false,
-    enableColumnFilter: false,
+    enableSorting: true,
+    enableColumnFilter: true,
     enableEditing: false,
     enableColumnActions: false,
     enableColumnDragging: false,
@@ -65,7 +65,7 @@ const columns: MRT_ColumnDef<HealthStation>[] = [
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
   },
   {
-    enableSorting: false,
+    enableSorting: true,
     enableColumnFilter: false,
     enableEditing: false,
     enableColumnActions: false,

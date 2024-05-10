@@ -19,7 +19,8 @@ function ChildrenPage() {
       firstName: child.firstName,
       lastName: child.lastName,
       middleName: child.middleName,
-      isVaccineCompleted: child.isVaccineCompleted,
+      isVaccineCompleted:
+        child.isVaccineCompleted == true ? "completed" : "ongoing",
       motherFullName: `${child?.mother?.user?.profile?.firstName} ${child?.mother?.user?.profile?.middleName}`,
     };
   });

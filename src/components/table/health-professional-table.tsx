@@ -76,10 +76,10 @@ const columns: MRT_ColumnDef<any>[] = [
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render,
   },
   {
-    enableSorting: false,
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
+    enableSorting: true,
+    enableColumnFilter: true,
+    enableEditing: true,
+    enableColumnActions: true,
     enableColumnDragging: false,
     accessorFn: (originalRow) => originalRow.proProfile.position, //alternate way
     id: "position", //id required if you use accessorFn instead of accessorKey

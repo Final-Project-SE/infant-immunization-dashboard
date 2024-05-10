@@ -62,16 +62,16 @@ const columns: MRT_ColumnDef<Child>[] = [
   },
 
   {
-    enableSorting: false,
-    enableColumnFilter: false,
-    enableEditing: false,
-    enableColumnActions: false,
+    enableSorting: true,
+    enableColumnFilter: true,
+    enableEditing: true,
+    enableColumnActions: true,
     enableColumnDragging: false,
     accessorFn: (originalRow) => originalRow.isVaccineCompleted,
     id: "isVaccineCompleted",
-    header: "Vacc. Completed",
-    Header: <p>Vacc. Completed</p>,
-    Cell: ({ cell }) => <p>{cell.getValue<Boolean>().toLocaleString()}</p>,
+    header: "Vacc. Status",
+    Header: <p>Vacc. Status</p>,
+    Cell: ({ cell }) => <p>{cell.getValue<string>().toLocaleString()}</p>,
   },
   {
     enableColumnFilter: false,
