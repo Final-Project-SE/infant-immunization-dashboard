@@ -1,36 +1,45 @@
-import { useGetHealthStations } from "@/hooks/api/health-station";
-import { useGetVaccines } from "@/hooks/api/vaccine";
-import PageHeader from "@/components/header/page-header";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  CartesianGrid,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer } from 'recharts';
+import { useGetVaccines } from '@/hooks/api/vaccine';
+import { useGetHealthStations } from '@/hooks/api/health-station';
 import { Spinner } from "@/components/ui";
 import ErrorMessage from "@/components/error-display/error-message";
 import Empty from "@/components/error-display/empty";
-import { HealthStation } from "@/utils/types/component";
+import PageHeader from "@/components/header/page-header";
 
-function Dashboard() {
-  const { hs: healthStations, isPending: hsPending, error: hsError } = useGetHealthStations();
-  const { vaccines, isPending: vPending, error: vError } = useGetVaccines();
+const Dashboard = () => {
+  const { vaccines, isPending: isFetchingVaccines, error: vaccinesError } = useGetVaccines();
+  const { hs, isPending: isFetchingHealthStations, error: healthStationsError } = useGetHealthStations();
 
-  if (hsPending || vPending) return <Spinner />;
+  if (isFetchingVaccines || isFetchingHealthStations) {
+    return <Spinner />;
+  }
 
-  if (hsError) return <ErrorMessage error={hsError} />;
-  if (vError) return <ErrorMessage error={vError} />;
+  if (vaccinesError) {
+    return <ErrorMessage message={vaccinesError.message} />;
+  }
 
-  if (!healthStations || !vaccines) return <Empty resourceName="data" />;
+  if (healthStationsError) {
+    return <ErrorMessage message={healthStationsError.message} />;
+  }
 
-  const transformedHealthStations = healthStations.map((hs: HealthStation) => ({ name: hs.name, count:  healthStations.length }));
-  const transformedVaccines = vaccines.map(vaccine => ({ name: vaccine.name, count: vaccine.dose }));
+  if (vaccines?.length === 0 || hs?.length === 0) {
+    return <Empty resourceName="Data" />;
+  }
 
-  
+  const healthStationsPerRegion = hs?.reduce((acc: {[key: string]: number}, hs: {region: string}) => {
+    acc[hs.region] = (acc[hs.region] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const transformedHealthStations = Object.entries(healthStationsPerRegion).map(([region, count]) => ({ name: region, count }));
+
+  const vaccinesPerCategory = vaccines?.reduce((acc: {[key: string]: number}, vaccine) => {
+    acc[vaccine.category] = (acc[vaccine.category] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const transformedVaccines = Object.entries(vaccinesPerCategory).map(([category, count]) => ({ name: category, count }));
+
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4">
       <PageHeader pageName="Dashboard" />
@@ -66,6 +75,6 @@ function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
