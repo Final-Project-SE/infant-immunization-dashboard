@@ -42,7 +42,7 @@ function CreateNewsModal({ open, onOpenChange, onCreate }: { open: boolean, onOp
             <Label htmlFor="description" className="text-left">
               Description
             </Label>
-            <Input id="description" className="col-span-3" value={description} onChange={(e) => setDescription(e.target.value)} />
+            <textarea id="description" className="col-span-3" value={description} onChange={(e) => setDescription(e.target.value)} />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="imageUrl" className="text-left">

@@ -35,7 +35,6 @@ export function useCreateNews() {
   const queryClient = useQueryClient();
 
   const {
-    isPending,
     mutate: create,
     error,
   } = useMutation({
@@ -47,11 +46,33 @@ export function useCreateNews() {
       });
     },
     onError: (err) => {
-      toast.error(err.message);
+      toast.error(`Error creating news: ${err.message}`);
     },
   });
 
-  return { isPending, error, create };
+  return { error, create };
+}
+
+export function useDeleteNews() {
+  const queryClient = useQueryClient();
+
+  const {
+    mutate: remove,
+    error,
+  } = useMutation({
+    mutationFn: deleteNews,
+    onSuccess: () => {
+      toast.success(`News successfully deleted`);
+      queryClient.invalidateQueries({
+        queryKey: ["newsData"],
+      });
+    },
+    onError: (err) => {
+      toast.error(`Error deleting news: ${err.message}`);
+    },
+  });
+
+  return { error, remove };
 }
 
 export function useUpdateNews() {
@@ -77,25 +98,3 @@ export function useUpdateNews() {
   return { isPending, error, update };
 }
 
-export function useDeleteNews() {
-  const queryClient = useQueryClient();
-  const { id } = useParams();
-  const {
-    isPending,
-    mutate: remove,
-    error,
-  } = useMutation({
-    mutationFn: () => deleteNews(id as string), // Update the type of 'id' to 'string'
-    onSuccess: () => {
-      toast.success(`News successfully deleted`);
-      queryClient.invalidateQueries({
-        queryKey: ["newsData"],
-      });
-    },
-    onError: () => { // Remove the unused parameter 'err'
-      toast.error(`There was an error while deleting news`);
-    },
-  });
-
-  return { isPending, error, remove };
-}

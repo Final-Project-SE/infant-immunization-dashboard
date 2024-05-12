@@ -1,6 +1,6 @@
 import config from "@/configs/config";
 import axios from "axios";
-async function getSingleHealthStation(hsid: string) {
+async function getSingleHealthStation(hsid: any) {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
     const res = await axios.get(`${config.BASE_URL}/hs/${hsid}`);

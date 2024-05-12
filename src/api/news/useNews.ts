@@ -21,7 +21,13 @@ async function createNews(news: News) {
 
 async function deleteNews(id: string | number) {
   try {
-    const res = await axios.delete(`${config.BASE_URL}/news/${id}`);
+    const res = await axios.delete(`${config.BASE_URL}/news/${id}`,{headers: {
+      "Content-Type": "application/json",
+      Authorization: config.AUTH_TOKEN,
+    },}
+  
+    );
+    
     return res.data;
   } catch (error: any) {
     const errorMsg = error.response ? error.response.data.message : error.message;
