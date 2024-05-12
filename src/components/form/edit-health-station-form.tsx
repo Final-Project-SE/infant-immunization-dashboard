@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
 import { HealthStation } from "@/utils/types/component";
 import {
-  useGetHealthStation,
+  useGetHealthStations,
   useUpdateHealthStation,
 } from "@/hooks/api/health-station";
 import { Spinner } from "../ui";

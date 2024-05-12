@@ -35,6 +35,7 @@ import PageNotFound from "./pages/page-not-found";
 import Children from "./pages/children";
 import { useSelector } from "react-redux";
 import { selectIsAuthenticated } from "./features/authSlice";
+import AddVaccinePage from "./pages/add-vaccine";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -68,6 +69,9 @@ function App() {
                 <Route
                   path="health-stations/:id/edit"
                   element={<EditHealthStationPage />}
+                />
+                <Route path="vaccines/add"
+                element={<AddVaccinePage/>}
                 />
                 <Route
                   path="health-professionals"

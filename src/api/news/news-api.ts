@@ -7,7 +7,7 @@ async function createNews(news: News) {
     const res = await axios.post(`${config.BASE_URL}/news`, news,{
       headers:{
         "Content-Type": "application/json",      
-  Authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSIiwiZmlyc3ROYW1lIjoiU3VwZXIiLCJpYXQiOjE3MTU1Mzg3NDJ9.gHpV_rZ7bz9el2Jx9P6OJ8Fq3JN9w99Hf6kwRZ8hddY",
+        Authorization: config.AUTH_TOKEN,
       }
     });
     return res.data;
@@ -72,7 +72,7 @@ async function updateNews(id: string | number, news: News) {
     const res = await axios.put(`${config.BASE_URL}/news/${id}`, news, {
       headers:{
         "Content-Type": "application/json",      
-  Authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IlNVUEVSIiwiZmlyc3ROYW1lIjoiU3VwZXIiLCJpYXQiOjE3MTU1Mzg3NDJ9.gHpV_rZ7bz9el2Jx9P6OJ8Fq3JN9w99Hf6kwRZ8hddY",
+        Authorization: config.AUTH_TOKEN,
       }
     })
     return res.data;

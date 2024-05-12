@@ -32,12 +32,13 @@ const Dashboard = () => {
     return <Empty resourceName="Data" />;
   }
 
-  const healthStationsPerRegion = hs?.reduce((acc: {[key: string]: number}, hs: {region: string}) => {
-    acc[hs.region] = (acc[hs.region] || 0) + 1;   
-    return acc;   
-  }, {}) || {};
-
-  const transformedHealthStations = Object.entries(healthStationsPerRegion).map(([region, count]) => ({ name: region, count: count || 0 }));
+  const healthStationsData = hs?.map((station) => ({
+    name: station.name,
+    mothers: station.mothers != null ? station.mothers : 0,
+    children: station.children != null ? station.children : 0,
+  })) || [];
+  
+  const transformedHealthStations = healthStationsData;
 
   const vaccinesPerCategory = vaccines?.reduce((acc: {[key: string]: number}, vaccine) => {
     acc[vaccine.category] = (acc[vaccine.category] || 0) + 1;
@@ -71,14 +72,15 @@ const Dashboard = () => {
           <div className="mt-4">
             <h2>Health Stations</h2>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={transformedHealthStations}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="count" stroke="#8884d8" />
-              </LineChart>
+            <LineChart data={transformedHealthStations}>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="name" />
+  <YAxis />
+  <Tooltip />
+  <Legend />
+  <Line type="monotone" dataKey="mothers" stroke="#8884d8" />
+  <Line type="monotone" dataKey="children" stroke="#82ca9d" />
+</LineChart>
             </ResponsiveContainer>
           </div>
           <div className="mt-4">

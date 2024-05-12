@@ -10,7 +10,7 @@ function AddVaccineForm() {
   const { register, formState, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async () => {
     // Call your API to create a vaccine here
     // After successful creation, reset the form and navigate to the vaccines page
     reset();
