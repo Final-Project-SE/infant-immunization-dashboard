@@ -33,7 +33,7 @@ function News() {
         createdDate: new Date(),
         title,
         description,
-        imageUrl,
+        imageUrl: [imageUrl],
       });
       setTitle("");
       setDescription("");
@@ -57,6 +57,8 @@ function News() {
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4">
       <PageHeader pageName="News" />
+        
+        <CreateNewsModal open={isModalOpen} onOpenChange={setIsModalOpen} onCreate={handlePostNews} />
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {news.map((item: any) => (
   <div key={item.id} className="bg-white shadow rounded p-4">
@@ -66,7 +68,7 @@ function News() {
       className="w-full h-64 object-cover rounded"
     />
     <h1 className="mt-4 text-lg font-bold">{item.titleAm}</h1>
-    <p className="mt-2 text-gray-600">{item.descriptionAm}</p>
+    <p className="mt-2 text-gray-600">{item.descriptionAm.substring(0,20)}</p>
     <p className="mt-2 text-sm text-gray-500">
       Posted by: {item.writer ? item.writer.email : 'Unknown'}
     </p>
@@ -79,8 +81,6 @@ function News() {
   </div>
 ))}
       </div>
-      <button onClick={() => setIsModalOpen(true)}>Post News</button>
-      <CreateNewsModal open={isModalOpen} onOpenChange={setIsModalOpen} onCreate={handlePostNews} />
     </div>
   );
 }

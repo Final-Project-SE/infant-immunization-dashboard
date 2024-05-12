@@ -1,5 +1,5 @@
 import { News } from "@/utils/types/component";
-import { createNews, deleteNews, getAllNews, getSingleNews, updateNews } from "@/api/news/useNews";
+import { createNews, deleteNews, getAllNews, getSingleNews, updateNews } from "@/api/news/news-api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";

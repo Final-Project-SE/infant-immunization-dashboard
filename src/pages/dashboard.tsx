@@ -1,6 +1,8 @@
-import { LineChart, Line,  CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { LineChart, Line,  CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell,BarChart,
+  Bar, } from 'recharts';
 import { useGetVaccines } from '@/hooks/api/vaccine';
 import { useGetHealthStations } from '@/hooks/api/health-station';
+import { useGetChildren } from '@/hooks/api/children';
 import { Spinner } from "@/components/ui";
 import ErrorMessage from "@/components/error-display/error-message";
 import Empty from "@/components/error-display/empty";
@@ -11,15 +13,17 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const Dashboard = () => {
   const { vaccines, isPending: isFetchingVaccines, error: vaccinesError } = useGetVaccines();
   const { hs, isPending: isFetchingHealthStations, error: healthStationsError } = useGetHealthStations();
+  const { children, isPending: isFetchingChildren, error: childrenError } = useGetChildren();
+  
 
-  if (isFetchingVaccines || isFetchingHealthStations) {
+  if (isFetchingVaccines || isFetchingHealthStations || isFetchingChildren) { // Update this line
     return <Spinner />;
   }
 
-  if (vaccinesError) {
-    return <ErrorMessage message={vaccinesError.message} />;
+  if (vaccinesError || childrenError) { // Update this line
+    return <ErrorMessage message={vaccinesError ? vaccinesError.message : childrenError.message} />; // Update this line
   }
- 
+
   if (healthStationsError) {
     return <ErrorMessage message={healthStationsError.message} />;
   }
@@ -41,6 +45,23 @@ const Dashboard = () => {
   }, {}) || {};
 
   const transformedVaccines = Object.entries(vaccinesPerCategory).map(([category, count]) => ({ name: category, count: count || 0 }));
+  const immunizationByStation = [
+    { name: "Station 1", infants: 10, toddlers: 12, preschoolers: 22 },
+    { name: "Station 2", infants: 8, toddlers: 10, preschoolers: 18 },
+    { name: "Station 3", infants: 9, toddlers: 11, preschoolers: 20 },
+  ];
+
+  const immunizationStatus = children?.reduce((acc: {[key: string]: number}, child) => {
+    const key = child.isVaccineCompleted ? 'Completed' : 'Not Completed';
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {}) || {};
+
+  const transformedImmunizationStatus = Object.entries(immunizationStatus).map(([status, count]) => ({ name: status, count: count || 0 }));
+
+
+
+  
 
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4">
@@ -83,6 +104,45 @@ const Dashboard = () => {
               </PieChart>
             </ResponsiveContainer>
           </div>
+          <div className="mt-4">
+            <h2>Immunization Status</h2>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={transformedImmunizationStatus}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="count"
+                >
+                  {transformedImmunizationStatus.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="mt-4">
+            <h2>Immunization by Health Station</h2>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={immunizationByStation}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="infants" fill="#8884d8" />
+                <Bar dataKey="toddlers" fill="#82ca9d" />
+                <Bar dataKey="preschoolers" fill="#ffc658" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+         
         </div>
       </div>
     </div>
@@ -90,3 +150,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+

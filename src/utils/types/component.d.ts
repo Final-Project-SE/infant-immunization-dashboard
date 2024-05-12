@@ -162,7 +162,7 @@ export type News = {
   user: User;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl: string[];
   createdDate: Date;
 
 };

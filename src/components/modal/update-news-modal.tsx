@@ -1,33 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-function CreateNewsModal({ open, onOpenChange, onCreate }: { open: boolean, onOpenChange: (isOpen: boolean) => void, onCreate: (data: { title: string, description: string, imageUrl: string }) => void }) {
+function UpdateNewsModal({ open, onOpenChange, onUpdate, news }: { open: boolean, onOpenChange: (isOpen: boolean) => void, onUpdate: (data: { title: string, description: string, imageUrl: string }) => void, news: { title: string, description: string, imageUrl: string } }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    if (news) {
+      setTitle(news.title);
+      setDescription(news.description);
+      setImageUrl(news.imageUrl);
+    }
+  }, [news]);
 
   const handleClose = () => {
     onOpenChange(false);
   };
 
   const handleSubmit = () => {
-    onCreate({ title, description, imageUrl });
+    onUpdate({ title, description, imageUrl });
     handleClose();
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline">Post News</Button>
+        <Button variant="outline">Update News</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] ">
         <DialogHeader>
-          <DialogTitle>Post News</DialogTitle>
+          <DialogTitle>Update News</DialogTitle>
           <DialogDescription>
-            Post a new news item. Enter the required details and click Post to create the news.
+            Update a news item. Change the details and click Update to save the changes.
           </DialogDescription>
         </DialogHeader>
 
@@ -57,7 +65,7 @@ function CreateNewsModal({ open, onOpenChange, onCreate }: { open: boolean, onOp
               Cancel
             </Button>
             <Button type="submit" onClick={handleSubmit}>
-              Post
+              Update
             </Button>
           </div>
         </DialogFooter>
@@ -66,4 +74,4 @@ function CreateNewsModal({ open, onOpenChange, onCreate }: { open: boolean, onOp
   );
 }
 
-export default CreateNewsModal;
+export default UpdateNewsModal;
