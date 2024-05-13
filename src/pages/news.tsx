@@ -14,30 +14,24 @@ function News() {
   const { remove: deleteNews } = useDeleteNews();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [attachments, setAttachments] = useState<File | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handlePostNews = async () => {
+  const handlePostNews = async ({ title, description, attachments }: { title: string, description: string, attachments: File | null }) => {
     try {
-      await create({
-        id: 1,
-        user: {
-          id: 1,
-          email: "email@example.com",
-          phone: "123-456-7890",
-          role: "role",
-          otp: "123456",
-          activeStatus: "active",
-          createdDate: new Date(),
-        },
-        createdDate: new Date(),
-        title,
-        description,
-        imageUrl: [imageUrl],
-      });
-      setTitle("");
-      setDescription("");
-      setImageUrl("");
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      if (attachments instanceof File) {
+        formData.append("file", attachments, attachments.name); // changed "attachments" to "file"
+      }
+  
+      // Log each entry in the FormData
+      for (let pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+      }
+  
+      await create(formData);
       setIsModalOpen(false);
     } catch (error) {
       console.error(error);

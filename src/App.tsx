@@ -36,8 +36,8 @@ import Children from "./pages/children";
 import { useSelector } from "react-redux";
 import { selectIsAuthenticated } from "./features/authSlice";
 import AddVaccinePage from "./pages/add-vaccine";
-import MotherProfilePage from "./pages/mother-profile";
-import ChildDetailPage from "./pages/child-detail";
+import TreatmentInfo from "./pages/treatment-info";
+import AddTreatmentInformationPage from "./pages/add-treatment-information";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -63,10 +63,15 @@ function App() {
                 <Route path="dashboard" element={<Dashboard />} />
 
                 <Route path="health-stations" element={<HealthStations />} />
+                <Route path="treatment-info" element={<TreatmentInfo />} />
 
                 <Route
                   path="health-stations/add"
                   element={<AddHealthStationPage />}
+                />
+                <Route
+                  path="treatment-informations/add"
+                  element={<AddTreatmentInformationPage />}
                 />
                 <Route
                   path="health-stations/:id/edit"
