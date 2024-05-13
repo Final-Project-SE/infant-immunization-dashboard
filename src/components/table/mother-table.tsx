@@ -4,9 +4,11 @@ import Table from "../ui/table";
 
 import { Mother } from "@/utils/types/component";
 import {
+  RegisterChildAction,
+  DeactivateMotherAction,
   DeleteMotherAction,
+  MakeAppointmentsAction,
   UpdateMotherAction,
-  ViewAppointmentsAction,
   ViewDetailAction,
 } from "../table-action/mother-table-row-actions";
 
@@ -94,9 +96,10 @@ const MotherTable = ({ mothers }: { mothers: any[] }) => {
       data={mothers}
       RowActions={[
         ViewDetailAction,
-        ViewAppointmentsAction,
+        RegisterChildAction,
+        MakeAppointmentsAction,
         UpdateMotherAction,
-        DeleteMotherAction,
+        DeactivateMotherAction,
       ]}
       // ToolBarAction={}
     />

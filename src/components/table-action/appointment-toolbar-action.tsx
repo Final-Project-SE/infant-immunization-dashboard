@@ -1,9 +1,10 @@
 import CreateAppointmentModal from "../modal/create-appointment-modal";
 import { Button } from "../ui/button";
 
-const CreateAppointmentToolbarAction = () => {
+const CreateAppointmentToolbarAction = (mother: any) => {
+  console.log(mother);
   return (
-    <CreateAppointmentModal onCreate={() => {}}>
+    <CreateAppointmentModal mother={mother}>
       <Button>Create new appointment</Button>
     </CreateAppointmentModal>
   );

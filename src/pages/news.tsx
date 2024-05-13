@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { useGetAllNews, useCreateNews, useUpdateNews, useDeleteNews } from "@/hooks/api/news";
+import {
+  useGetAllNews,
+  useCreateNews,
+  useUpdateNews,
+  useDeleteNews,
+} from "@/hooks/api/news";
 import PageHeader from "@/components/header/page-header";
 import { News as NewsType } from "@/utils/types/component";
 import { Spinner } from "@/components/ui";
 import ErrorMessage from "@/components/error-display/error-message";
 import Empty from "@/components/error-display/empty";
 import { MdEdit, MdDelete } from "react-icons/md";
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, IconButton } from '@material-ui/core';
 
 function News() {
   const { isPending, error, news } = useGetAllNews();
@@ -16,6 +20,9 @@ function News() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editImageUrl, setEditImageUrl] = useState("");
   const [editId, setEditId] = useState<number | null>(null);
 
   const handlePostNews = async () => {
@@ -43,16 +50,33 @@ function News() {
       console.error(error);
     }
   };
-  
-  
-  
+
+  const handleUpdateNews = async () => {
+    if (editId && news) {
+      const newsToUpdate = news.find((item) => item.id === editId);
+      if (newsToUpdate) {
+        try {
+          await update(newsToUpdate);
+          setEditId(null);
+          setEditTitle("");
+          setEditDescription("");
+          setEditImageUrl("");
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+  };
 
   const handleDeleteNews = async (id: number) => {
-    await deleteNews(id);
+    await deleteNews(id as any);
   };
 
   const handleEditNews = (newsItem: NewsType) => {
     setEditId(newsItem.id);
+    setEditTitle(newsItem.title);
+    setEditDescription(newsItem.description);
+    setEditImageUrl(newsItem.imageUrl);
   };
 
   if (isPending) return <Spinner />;
@@ -66,39 +90,29 @@ function News() {
       <PageHeader pageName="News" />
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {news.map((item: any) => (
-          <Card key={item.id} className="bg-white shadow rounded p-4">
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt={item.titleAm}
-                height="140"
-                image={item.images[0]?.imageUrl}
-                title={item.titleAm}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {item.titleAm}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {item.descriptionAm}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Posted by: {item.writer ? item.writer.email : 'Unknown'}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Date: {new Date(item.createdAt).toLocaleDateString()}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <IconButton onClick={() => handleEditNews(item)} title="Edit">
-                <MdEdit/>
-              </IconButton>
-              <IconButton onClick={() => handleDeleteNews(item.id)} title="Delete">
-                <MdDelete/>
-              </IconButton>
-            </CardActions>
-          </Card>
+          <div key={item.id} className="bg-white shadow rounded p-4">
+            <img
+              src={item.images[0]?.imageUrl}
+              alt={item.titleAm}
+              className="w-full h-64 object-cover rounded"
+            />
+            <h1 className="mt-4 text-lg font-bold">{item.titleAm}</h1>
+            <p className="mt-2 text-gray-600">{item.descriptionAm}</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Posted by: {item.writer ? item.writer.email : "Unknown"}
+            </p>
+            <p className="mt-2 text-sm text-gray-500">
+              Date: {new Date(item.createdAt).toLocaleDateString()}
+            </p>
+            <div className="flex items-center justify-center">
+              <button onClick={() => handleEditNews(item)} title="Edit">
+                <MdEdit />
+              </button>
+              <button onClick={() => handleDeleteNews(item.id)} title="Delete">
+                <MdDelete />
+              </button>
+            </div>
+          </div>
         ))}
       </div>
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
@@ -123,13 +137,32 @@ function News() {
         />
         <button onClick={handlePostNews}>Post</button>
       </div>
-      
+      {/* {editId && (
+        <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
+          <h2>Edit News</h2>
+          <input
+            type="text"
+            value={editTitle}
+            onChange={(e) => setEditTitle(e.target.value)}
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            value={editDescription}
+            onChange={(e) => setEditDescription(e.target.value)}
+            placeholder="Description"
+          />
+          <input
+            type="text"
+            value={editImageUrl}
+            onChange={(e) => setEditImageUrl(e.target.value)}
+            placeholder="Image URL"
+          />
+          <button onClick={handleUpdateNews}>Update</button>
+        </div>
+      )} */}
     </div>
   );
 }
 
 export default News;
-
-
-
-

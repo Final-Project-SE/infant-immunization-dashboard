@@ -13,11 +13,8 @@ const appointments: Appointment[] = [
     // motherMiddleName: "Doe",
     motherFullName: "Jane Doe",
     healthProfessionalFullName: "John Doe",
-
     visitDate: new Date(),
-    fromTime: "10:00",
-    toTime: "11:00",
-    visitTimeInterval: "10:00 - 11:00",
+
     status: "pending",
   },
   {
@@ -26,9 +23,7 @@ const appointments: Appointment[] = [
     healthProfessionalFullName: "John Doe",
 
     visitDate: new Date(),
-    fromTime: "10:00",
-    toTime: "11:00",
-    visitTimeInterval: "10:00 - 11:00",
+
     status: "pending",
   },
   {
@@ -38,9 +33,7 @@ const appointments: Appointment[] = [
     healthProfessionalFullName: "John Doe",
 
     visitDate: new Date(),
-    fromTime: "10:00",
-    toTime: "11:00",
-    visitTimeInterval: "10:00 - 11:00",
+
     status: "pending",
   },
 ];

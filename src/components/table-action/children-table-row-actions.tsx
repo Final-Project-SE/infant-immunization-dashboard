@@ -42,9 +42,21 @@ export const UpdateChildAction = ({ row }: { row: any }) => {
         onClick={() => {}}
         className="text-gray-600 flex items-center gap-2"
       >
-        <SquarePen className="text-green-500 text-xs" /> Update
+        <SquarePen className="text-green-500 text-xs" /> Update data
       </MenuItem>
     </UpdateChildModal>
+  );
+};
+
+export const UpdateVaccinationStatusAction = ({ row }: { row: any }) => {
+  return (
+    <MenuItem
+      key="edit"
+      onClick={() => {}}
+      className="text-gray-600 flex items-center gap-2"
+    >
+      <SquarePen className="text-green-500 text-xs" /> Update vacc. status
+    </MenuItem>
   );
 };
 

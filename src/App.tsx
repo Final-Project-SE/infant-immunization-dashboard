@@ -35,6 +35,7 @@ import PageNotFound from "./pages/page-not-found";
 import Children from "./pages/children";
 import { useSelector } from "react-redux";
 import { selectIsAuthenticated } from "./features/authSlice";
+import MotherProfilePage from "./pages/mother-profile";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -89,11 +90,15 @@ function App() {
                 <Route path="vaccines" element={<Vaccines />} />
                 <Route path="news" element={<News />} />
                 <Route path="reports" element={<Reports />} />
+                <Route
+                  path="motherProfile/:id"
+                  element={<MotherProfilePage />}
+                />
               </Route>
             ) : (
               // redirect to login page if not authenticated
-              // <Route path="*" element={<Navigate to="/login" />} />
-              <Route path="news" element={<News />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+              // <Route path="news" element={<News />} />
             )}
             <Route path="*" element={<PageNotFound />} />
           </Routes>

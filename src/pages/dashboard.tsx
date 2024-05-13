@@ -15,13 +15,18 @@ import {
 function Dashboard() {
   // Sample data
   const immunizationByStation = [
-    { name: "Station 1", infants: 100, toddlers: 120, preschoolers: 90 },
-    { name: "Station 2", infants: 80, toddlers: 100, preschoolers: 120 },
-    { name: "Station 3", infants: 90, toddlers: 110, preschoolers: 80 },
+    { name: "Fromsis Hospital", infants: 100, toddlers: 120, preschoolers: 90 },
+    { name: "JU Hospital", infants: 80, toddlers: 100, preschoolers: 120 },
+    {
+      name: "Jimma Specialty Hospital",
+      infants: 90,
+      toddlers: 110,
+      preschoolers: 80,
+    },
   ];
   const vaccinesGiven = [
-    { name: "Vaccine 1", infants: 80, toddlers: 100, preschoolers: 120 },
-    { name: "Vaccine 2", infants: 90, toddlers: 110, preschoolers: 80 },
+    { name: "Child vaccine", infants: 80, toddlers: 100, preschoolers: 120 },
+    { name: "Mother vaccine 2", infants: 90, toddlers: 110, preschoolers: 80 },
     { name: "Vaccine 3", infants: 100, toddlers: 120, preschoolers: 90 },
   ];
   const appointments = [

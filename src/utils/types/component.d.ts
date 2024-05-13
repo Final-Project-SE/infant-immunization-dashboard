@@ -98,6 +98,15 @@ export type Child = {
   // motherMiddleName: string;
   // motherLastName: string;
 };
+export type ChildOfMother = {
+  id: number;
+
+  firstName: string;
+  middleName: string;
+  lastName: string;
+
+  isVaccineCompleted: string;
+};
 
 export type Vaccine = {
   id: number;
@@ -113,6 +122,24 @@ export type Vaccine = {
   // dosageType: string;
   // duration: string;
   // createdDate: Date;
+};
+
+export type MotherVaccine = {
+  id: number;
+  vaccine: string;
+  healthStation: string;
+  isGiven: boolean;
+  givenDate: Date;
+};
+
+export type ChildVaccine = {
+  id: number;
+  childFirstName: string;
+  childMiddleName: string;
+  vaccine: string;
+  healthStation: string;
+  isGiven: boolean;
+  givenDate: Date;
 };
 
 export type Certificate = {
@@ -133,9 +160,9 @@ export type Appointment = {
   visitDate: Date;
 
   // Visit time interval
-  fromTime: string;
-  toTime: string;
-  visitTimeInterval: string;
+  // fromTime: string;
+  // toTime: string;
+  // visitTimeInterval: string;
 
   // the health professional who will attend the appointment
   healthProfessionalFullName?: string;
@@ -162,7 +189,6 @@ export type News = {
   description: string;
   imageUrl: string;
   createdDate: Date;
-
 };
 
 export type Report = {

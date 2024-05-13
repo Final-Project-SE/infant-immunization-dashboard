@@ -59,13 +59,13 @@ const Menu = () => {
       title: "Health Profs",
       href: "/health-professionals",
     },
-    {
-      // icon: <TbDeviceAnalytics />,
-      //   icon: <TbReportAnalytics />,
-      icon: <TbReport />,
-      title: "Reports",
-      href: "/reports",
-    },
+    // {
+    //   // icon: <TbDeviceAnalytics />,
+    //   //   icon: <TbReportAnalytics />,
+    //   icon: <TbReport />,
+    //   title: "Reports",
+    //   href: "/reports",
+    // },
     {
       icon: <WiTime7 />,
       title: "Appointments",

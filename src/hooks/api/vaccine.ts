@@ -2,7 +2,15 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Vaccine } from "@/utils/types/component";
-import { createVaccine, deleteVaccine, getAllVaccines, getSingleVaccine, updateVaccine } from "@/api/vaccine/useVaccines";
+import {
+  createVaccine,
+  deleteVaccine,
+  getAllVaccines,
+  getSingleVaccine,
+  updateVaccine,
+} from "@/api/vaccine/useVaccines";
+import getVaccinesOfMother from "@/api/vaccine/get-vaccines-of-mother";
+import getVaccinesOfChildrenOfMother from "@/api/vaccine/get-vacc-of-children-of-mother";
 
 export function useGetVaccines() {
   const {
@@ -98,4 +106,32 @@ export function useDeleteVaccine() {
   });
 
   return { isPending, error, remove };
+}
+
+export function useGetVaccinesOfMother() {
+  const { id } = useParams();
+  const {
+    isPending,
+    data: vaccines,
+    error,
+  } = useQuery({
+    queryKey: ["vaccineData", id],
+    queryFn: () => getVaccinesOfMother(id as any),
+  });
+
+  return { isPending, error, vaccines };
+}
+
+export function useGetChildrenVaccOfMother() {
+  const { id } = useParams();
+  const {
+    isPending,
+    data: vaccines,
+    error,
+  } = useQuery({
+    queryKey: ["childrenVaccineData", id],
+    queryFn: () => getVaccinesOfChildrenOfMother(id as any),
+  });
+
+  return { isPending, error, vaccines };
 }

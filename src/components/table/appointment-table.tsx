@@ -67,18 +67,18 @@ const columns: MRT_ColumnDef<Appointment>[] = [
     Header: <p>Visit Date</p>, //optional custom markup
     Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render,
   },
-  {
-    enableSorting: true,
-    enableColumnFilter: true,
-    enableEditing: false,
-    enableColumnActions: false,
-    enableColumnDragging: false,
-    accessorFn: (originalRow) => originalRow.visitTimeInterval, //alternate way
-    id: "visitTimeInterval", //id required if you use accessorFn instead of accessorKey
-    header: "Visit Time",
-    Header: <p>Visit Time</p>, //optional custom markup
-    Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
-  },
+  // {
+  //   enableSorting: true,
+  //   enableColumnFilter: true,
+  //   enableEditing: false,
+  //   enableColumnActions: false,
+  //   enableColumnDragging: false,
+  //   accessorFn: (originalRow) => originalRow.visitTimeInterval, //alternate way
+  //   id: "visitTimeInterval", //id required if you use accessorFn instead of accessorKey
+  //   header: "Visit Time",
+  //   Header: <p>Visit Time</p>, //optional custom markup
+  //   Cell: ({ cell }) => <p>{cell.getValue<number>().toLocaleString()}</p>, //optional custom cell render
+  // },
   {
     enableSorting: true,
     enableColumnFilter: true,
@@ -109,7 +109,7 @@ const AppointmentTable = ({
         CancelAppointment,
         DeleteAppointment,
       ]}
-      ToolBarAction={CreateAppointmentToolbarAction}
+      // ToolBarAction={CreateAppointmentToolbarAction}
     />
   );
 };

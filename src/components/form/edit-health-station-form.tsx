@@ -116,14 +116,7 @@ function EditHealthStationForm() {
                 id="email"
                 className="col-span-3"
                 defaultValue={email}
-                disabled={isPending}
-                {...register("email", {
-                  required: "This field is required",
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: "Please provide a valid email address",
-                  },
-                })}
+                disabled={true}
               />
             </div>
             {errors?.email?.message && (
