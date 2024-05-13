@@ -2,7 +2,11 @@ import { type MRT_ColumnDef } from "material-react-table";
 
 import Table from "../ui/table";
 
-import { MotherVaccine, Vaccine } from "@/utils/types/component";
+import {
+  ChildVaccineType,
+  MotherVaccine,
+  Vaccine,
+} from "@/utils/types/component";
 import VaccineTableToolbarAction from "../table-action/vaccine-action";
 import {
   DeleteVaccineRowAction,
@@ -13,7 +17,7 @@ import {
 } from "../table-action/vaccine-row-action";
 
 //column definitions...
-const columns: MRT_ColumnDef<MotherVaccine>[] = [
+const columns: MRT_ColumnDef<ChildVaccineType>[] = [
   {
     enableSorting: false,
     enableEditing: false,
@@ -71,18 +75,14 @@ const columns: MRT_ColumnDef<MotherVaccine>[] = [
   // Add more columns as per your requirements...
 ];
 
-const ChildrenOfMotherVaccTable = ({
-  vaccines,
-}: {
-  vaccines: MotherVaccine[];
-}) => {
+const ChildVaccinesTable = ({ vaccines }: { vaccines: MotherVaccine[] }) => {
   console.log(vaccines);
   return (
     <Table
       columnDefinition={columns as any}
       data={vaccines}
       RowActions={[
-        generateCertificateRowAction,
+        // generateCertificateRowAction,
         // ViewDetailRowAction,
         UpdateVaccineRowAction,
         // DeactivateVaccineRowAction,
@@ -93,4 +93,4 @@ const ChildrenOfMotherVaccTable = ({
   );
 };
 
-export default ChildrenOfMotherVaccTable;
+export default ChildVaccinesTable;

@@ -1,20 +1,15 @@
 import config from "@/configs/config";
 import axios from "axios";
-
-async function getMothers() {
+async function getVaccinationsOfChild(childId: number) {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
-    const res = await axios.get(`${config.BASE_URL}/user/mother/hs/my`, {
-      headers: {
-        "Content-Type": "application/json",
-        // later to be obtained from local storage
-        Authorization: config.AUTH_TOKEN,
-      },
-    });
+    const res = await axios.get(
+      `${config.BASE_URL}/vaccine/child/child/${childId}`
+    );
     console.log(res);
 
-    const healthStations = res.data;
-    return healthStations;
+    const vaccinations = res.data;
+    return vaccinations;
   } catch (error: any) {
     console.error("Error:", error);
     const errorMsg = error.response
@@ -24,4 +19,4 @@ async function getMothers() {
   }
 }
 
-export default getMothers;
+export default getVaccinationsOfChild;

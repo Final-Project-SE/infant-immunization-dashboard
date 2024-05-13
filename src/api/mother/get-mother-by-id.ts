@@ -1,13 +1,12 @@
 import config from "@/configs/config";
 import axios from "axios";
-async function getSingleHealthStation(hsid: any) {
+async function getMotherById(motherId: any) {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
-    const res = await axios.get(`${config.BASE_URL}/hs/${hsid}`);
-    console.log(res);
+    const res = await axios.get(`${config.BASE_URL}/user/mother/${motherId}`);
 
-    const healthStation = res.data;
-    return healthStation;
+    const mother = res.data;
+    return mother;
   } catch (error: any) {
     console.error("Error:", error);
     const errorMsg = error.response
@@ -17,4 +16,4 @@ async function getSingleHealthStation(hsid: any) {
   }
 }
 
-export default getSingleHealthStation;
+export default getMotherById;

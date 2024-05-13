@@ -6,6 +6,18 @@ import UpdateAdminModal from "../modal/update-admin-modal";
 import ConfirmModal from "../modal/confirm-modal";
 import { useNavigate } from "react-router-dom";
 
+export const generateCertificateRowAction = ({ row }: { row: any }) => {
+  return (
+    <MenuItem
+      key="generate"
+      onClick={() => {}}
+      className="text-gray-600 flex items-center gap-2"
+    >
+      <Eye className="text-green-500 text-sm" /> Generate Certificate
+    </MenuItem>
+  );
+};
+
 export const ViewDetailRowAction = ({ row }: { row: any }) => {
   const navigate = useNavigate();
   return (
@@ -28,7 +40,7 @@ export const UpdateVaccineRowAction = ({ row }: { row: any }) => {
         onClick={() => navigate(`/vaccines/${row.id}/edit`)}
         className="text-gray-600 flex items-center gap-2"
       >
-        <Edit className="text-yellow-500 text-sm" /> Update
+        <Edit className="text-yellow-500 text-sm" /> Update status
       </MenuItem>
     </UpdateAdminModal>
   );

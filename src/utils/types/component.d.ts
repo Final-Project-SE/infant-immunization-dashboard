@@ -132,6 +132,14 @@ export type MotherVaccine = {
   givenDate: Date;
 };
 
+export type ChildVaccineType = {
+  id: number;
+  vaccine: string;
+  healthStation: string;
+  isGiven: boolean;
+  givenDate: Date;
+};
+
 export type ChildVaccine = {
   id: number;
   childFirstName: string;
@@ -139,7 +147,7 @@ export type ChildVaccine = {
   vaccine: string;
   healthStation: string;
   isGiven: boolean;
-  givenDate: Date;
+  givenDate?: Date;
 };
 
 export type Certificate = {
@@ -187,7 +195,7 @@ export type News = {
   user: User;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl: string[];
   createdDate: Date;
 };
 

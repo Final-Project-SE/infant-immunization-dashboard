@@ -11,6 +11,7 @@ import {
 } from "@/api/vaccine/useVaccines";
 import getVaccinesOfMother from "@/api/vaccine/get-vaccines-of-mother";
 import getVaccinesOfChildrenOfMother from "@/api/vaccine/get-vacc-of-children-of-mother";
+import getVaccinationsOfChild from "@/api/vaccine/vaccineApi";
 
 export function useGetVaccines() {
   const {
@@ -134,4 +135,17 @@ export function useGetChildrenVaccOfMother() {
   });
 
   return { isPending, error, vaccines };
+}
+
+export function useGetVaccinationsOfChild() {
+  const { id } = useParams();
+  const {
+    isPending,
+    data: vaccines,
+    error,
+  } = useQuery({
+    queryKey: ["vaccineData", id],
+    queryFn: () => getVaccinationsOfChild(id as any),
+  });
+  return { isPending, vaccines, error };
 }

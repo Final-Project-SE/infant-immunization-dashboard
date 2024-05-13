@@ -10,7 +10,7 @@ import {
 } from "@/utils/types/component";
 import { Spinner } from "@/components/ui";
 import Empty from "@/components/error-display/empty";
-import { useGetMothers } from "@/hooks/api/mother";
+import { useGetMother, useGetMothers } from "@/hooks/api/mother";
 import { Button } from "@/components/ui/button";
 import AppointmentTable from "@/components/table/appointment-table";
 import ChildrenTable from "@/components/table/children-table";
@@ -59,19 +59,21 @@ const appointments: Appointment[] = [
 ];
 
 function MotherProfilePage() {
-  const {
-    isPending: isFetchingChildData,
+  const { isPending: isFetchingMotherData, mother } = useGetMother();
 
-    children,
-  } = useGetChildrenByMother();
+  const { isPending: isFetchingChildData, children } = useGetChildrenByMother();
 
   const { isPending: isFetchingMotherVaccineData, vaccines: motherVaccines } =
     useGetVaccinesOfMother();
 
-  const { isPending: isFetchingChildrenVacc, vaccines: childVaccines } =
-    useGetChildrenVaccOfMother();
+  if (
+    isFetchingMotherData ||
+    isFetchingChildData ||
+    isFetchingMotherVaccineData
+  )
+    return <Spinner />;
 
-  if (isFetchingChildData || isFetchingMotherVaccineData) return <Spinner />;
+  console.log(mother);
 
   const formattedChildren: ChildOfMother[] = children.map((child: any) => {
     return {
@@ -95,18 +97,6 @@ function MotherProfilePage() {
       };
     }
   );
-
-  // const formattedChildrenVaccines: ChildVaccine[] = childVaccines.map(vaccine:any) => {
-  //   return {
-  //     id: vaccine.id,
-  //     childFirstName: vaccine.child.firstName,
-  //     childMiddleName: vaccine.child.middleName,
-  //     vaccine: vaccine.vaccine.name,
-  //     healthStation: vaccine.healthStation.name,
-  //     isGiven: vaccine.isGiven,
-  //     givenDate: formatDate(new Date(vaccine.createdDateTime)),
-  //   };
-  // });
 
   return (
     <div className="mx-auto w-full bg-muted rounded mt-1 pb-4">
@@ -181,16 +171,16 @@ function MotherProfilePage() {
         <h1 className="font-semibold text-xl tracking-tight mb-4">
           Mother Vaccination
         </h1>
-        {/* <MotherVaccineTable vaccines={formattedMotherVaccines} /> */}
+        <MotherVaccineTable vaccines={formattedMotherVaccines} />
       </div>
 
       {/* child vaccination section */}
-      <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
+      {/* <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
         <h1 className="font-semibold text-xl tracking-tight mb-4">
           Child Vaccination
         </h1>
-        {/* <ChildrenOfMotherVaccTable vaccines={motherVaccines as any} /> */}
-      </div>
+        <ChildrenOfMotherVaccTable vaccines={formattedChildrenVaccines} />
+      </div> */}
 
       {/* mother child section */}
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">

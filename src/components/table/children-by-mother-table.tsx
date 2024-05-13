@@ -81,7 +81,7 @@ const ChildrenByMotherTable = ({ children }: { children: ChildOfMother[] }) => {
       columnDefinition={columns as any}
       data={children}
       RowActions={[
-        // ViewDetailAction,
+        ViewDetailAction,
         UpdateChildAction,
         // DeleteChildAction,
       ]}

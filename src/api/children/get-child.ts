@@ -1,14 +1,9 @@
 import config from "@/configs/config";
 import axios from "axios";
 
-async function getChildren() {
+async function getChildById(childId: number) {
   try {
-    const res = await axios.get(`${config.BASE_URL}/child/`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: config.AUTH_TOKEN,
-      },
-    });
+    const res = await axios.get(`${config.BASE_URL}/child/${childId}`, {});
 
     const children = res.data;
     return children;
@@ -21,4 +16,4 @@ async function getChildren() {
   }
 }
 
-export default getChildren;
+export default getChildById;
