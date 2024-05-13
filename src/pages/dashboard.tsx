@@ -17,12 +17,12 @@ const Dashboard = () => {
   
   
 
-  if (isFetchingVaccines || isFetchingHealthStations || isFetchingChildren) { // Update this line
+  if (isFetchingVaccines || isFetchingHealthStations || isFetchingChildren) { 
     return <Spinner />;
   }
 
-  if (vaccinesError || childrenError) { // Update this line
-    return <ErrorMessage message={vaccinesError ? vaccinesError.message : childrenError.message} />; // Update this line
+  if (vaccinesError || childrenError) { 
+    return <ErrorMessage message={vaccinesError ? vaccinesError.message : childrenError.message} />; 
   }
 
   if (healthStationsError) {

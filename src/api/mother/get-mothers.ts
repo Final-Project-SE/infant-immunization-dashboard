@@ -8,8 +8,7 @@ async function getMothers() {
       headers: {
         "Content-Type": "application/json",
         // later to be obtained from local storage
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6IlJFQ0VQVElPTiIsImZpcnN0TmFtZSI6IlRheWUiLCJpYXQiOjE3MTUxMDk4MzZ9.Hfo9g_O4j4bft15TfJ6VsW0upp6KscKcDIVsOsxoWGI",
+        Authorization: config.AUTH_TOKEN,
       },
     });
     console.log(res);
