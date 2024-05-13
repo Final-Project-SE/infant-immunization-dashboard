@@ -5,8 +5,7 @@ import { News } from "@/utils/types/component";
 async function createNews(news: News) {
   try {
     const res = await axios.post(`${config.BASE_URL}/news`, news,{
-      headers:{
-        "Content-Type": "application/json",      
+      headers:{      
         Authorization: config.AUTH_TOKEN,
       }
     });

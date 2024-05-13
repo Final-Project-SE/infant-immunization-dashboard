@@ -55,6 +55,11 @@ const Menu = () => {
       href: "/health-stations",
     },
     {
+      icon: <BsHospital />,
+      title: "treatment info",
+      href: "/treatment-info",
+    },
+    {
       icon: <FaUserDoctor />,
       title: "Health Profs",
       href: "/health-professionals",
