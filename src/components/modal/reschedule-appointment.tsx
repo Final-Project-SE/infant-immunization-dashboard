@@ -41,7 +41,7 @@ function CreateAppointmentModal({
     useState(false);
   const [vaccine, setVaccine] = useState("");
 
-  const appointmentMessage = `Dear ${motherFirstName} ${motherLastName}, the appointment has been rescheduled to ${} `;
+  const appointmentMessage = `Dear ${motherFirstName} ${motherLastName}, the appointment has been rescheduled to  `;
 
   const handleClose = () => {
     setOpen(false);
