@@ -61,11 +61,11 @@ const Dashboard = () => {
   }
 
   const healthStationsData =
-    hs?.map((station: any) => ({
-      name: station.name,
-      mothers: station.mothers != null ? station.mothers : 0,
-      children: station.children != null ? station.children : 0,
-    })) || [];
+  hs?.map((station: any) => ({
+    name: station.name,
+    mothers: station.mothers != null ? station.mothers : 13, // replace 100 with your dummy data
+    children: station.children != null ? station.children :22 , // replace 100 with your dummy data
+  })) || []; [];
 
   const transformedHealthStations = healthStationsData;
 
