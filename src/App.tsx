@@ -21,6 +21,7 @@ import MothersPage from "./pages/mother";
 import AppointmentsPage from "./pages/appointments";
 import Login from "./pages/login";
 
+
 // State management imports
 
 // Theme related imports
@@ -38,6 +39,8 @@ import { selectIsAuthenticated } from "./features/authSlice";
 import AddVaccinePage from "./pages/add-vaccine";
 import TreatmentInfo from "./pages/treatment-info";
 import AddTreatmentInformationPage from "./pages/add-treatment-information";
+import MotherProfilePage from "./pages/mother-profile";
+import ChildDetailPage from "./pages/child-detail";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -98,8 +101,8 @@ function App() {
                 <Route path="vaccines" element={<Vaccines />} />
                 <Route path="news" element={<News />} />
                 <Route path="reports" element={<Reports />} />
-                <Route path="mothers/:id" element={<MotherProfilePage />} />
-                <Route path="children/:id" element={<ChildDetailPage />} />
+                <Route path="mothers/:id" element={<MotherProfilePage/>} />
+                <Route path="children/:id" element={<ChildDetailPage/>} />
               </Route>
             ) : (
               // redirect to login page if not authenticated
