@@ -11,7 +11,10 @@ import {
 } from "@/api/vaccine/useVaccines";
 import getVaccinesOfMother from "@/api/vaccine/get-vaccines-of-mother";
 import getVaccinesOfChildrenOfMother from "@/api/vaccine/get-vacc-of-children-of-mother";
-import getVaccinationsOfChild from "@/api/vaccine/vaccineApi";
+import {
+  getVaccinationsOfChild,
+  vaccinateChild,
+} from "@/api/vaccine/vaccineApi";
 
 export function useGetVaccines() {
   const {
@@ -148,4 +151,34 @@ export function useGetVaccinationsOfChild() {
     queryFn: () => getVaccinationsOfChild(id as any),
   });
   return { isPending, vaccines, error };
+}
+
+export function useAddVaccinateChild() {
+  const queryClient = useQueryClient();
+
+  const {
+    isPending,
+    // data: hs,
+    mutate: AddVaccinateChild,
+    error,
+  } = useMutation({
+    mutationFn: vaccinateChild,
+    onSuccess: () => {
+      //   console.log(data);
+      toast.success(`Child vacccination stored successfully`);
+      queryClient.invalidateQueries({
+        queryKey: ["childVaccines"],
+      });
+    },
+    onError: (err) => {
+      console.log(err);
+      toast.error(
+        err.message ||
+          err.stack ||
+          "There was an error while storing vaccination"
+      );
+    },
+  });
+
+  return { isPending, error, AddVaccinateChild };
 }

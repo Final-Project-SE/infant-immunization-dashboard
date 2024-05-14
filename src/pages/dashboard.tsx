@@ -47,7 +47,7 @@ const Dashboard = () => {
   if (vaccinesError || childrenError) {
     return (
       <ErrorMessage
-        message={vaccinesError ? vaccinesError.message : childrenError.message}
+        message={vaccinesError ? vaccinesError.message : childrenError?.message}
       />
     );
   }

@@ -21,7 +21,7 @@ import { useGetHealthStations } from "@/hooks/api/health-station";
 import { vaccinateChild } from "@/api/vaccine/vaccineApi";
 import toast from "react-hot-toast";
 
-function AddChildVaccinationModal({ children }: { children: ReactElement }) {
+function AddMotherVaccinationModal({ children }: { children: ReactElement }) {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -66,9 +66,9 @@ function AddChildVaccinationModal({ children }: { children: ReactElement }) {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[650px] ">
           <DialogHeader>
-            <DialogTitle>Add child vaccination</DialogTitle>
+            <DialogTitle>Add mother vaccination</DialogTitle>
             <DialogDescription>
-              Register a child's vaccination. Enter the required details and
+              Register a mother's vaccination. Enter the required details and
               click add to save.
             </DialogDescription>
           </DialogHeader>
@@ -140,4 +140,4 @@ function AddChildVaccinationModal({ children }: { children: ReactElement }) {
   );
 }
 
-export default AddChildVaccinationModal;
+export default AddMotherVaccinationModal;

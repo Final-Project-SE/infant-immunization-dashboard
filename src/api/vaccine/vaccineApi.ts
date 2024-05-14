@@ -1,6 +1,6 @@
 import config from "@/configs/config";
 import axios from "axios";
-async function getVaccinationsOfChild(childId: number) {
+export async function getVaccinationsOfChild(childId: number) {
   try {
     // const res = await axios.get(`${config.BASE_URL}/hs/info/detail/info`);
     const res = await axios.get(
@@ -19,4 +19,27 @@ async function getVaccinationsOfChild(childId: number) {
   }
 }
 
-export default getVaccinationsOfChild;
+export async function vaccinateChild(reqBody: any) {
+  try {
+    const res = await axios.post(
+      `${config.BASE_URL}/vaccine/child`,
+      JSON.stringify(reqBody),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: config.AUTH_TOKEN,
+        },
+      }
+    );
+    console.log(res);
+
+    const childVaccination = res.data;
+    return childVaccination;
+  } catch (error: any) {
+    console.error("Error:", error);
+    const errorMsg = error.response
+      ? error.response.data.message
+      : error.message;
+    throw new Error(errorMsg);
+  }
+}

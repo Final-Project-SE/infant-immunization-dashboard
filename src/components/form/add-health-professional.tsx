@@ -33,7 +33,7 @@ function AddHealthProfessionalForm() {
         sex: gender,
         image: "image",
         // health station id later tobe fetched from the user
-        healthStationId: 4,
+        healthStationId: 1,
         role: "HEALTH_PROFETIONAL",
       },
       {

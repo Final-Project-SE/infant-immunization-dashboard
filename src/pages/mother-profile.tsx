@@ -24,6 +24,10 @@ import MotherVaccineTable from "@/components/table/mother-vaccine-table";
 import { formatDate } from "@/utils/constants/date";
 import ChildrenOfMotherVaccTable from "@/components/table/children-vaccination-by-mother";
 import AddChildVaccinationModal from "@/components/modal/child-vaccination-modal";
+import RegisterChildModal from "@/components/modal/register-child-for-mother";
+import AddMotherVaccinationModal from "@/components/modal/mother-vaccination-modal";
+import CreateAppointmentModal from "@/components/modal/create-appointment-modal";
+import CreateMotherAppointmentModal from "@/components/modal/create-mother-appointment";
 
 const appointments: Appointment[] = [
   {
@@ -108,7 +112,7 @@ function MotherProfilePage() {
         {/* profile section  */}
         <div className="flex items-center gap-8">
           <img
-            src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=740"
+            src="https://img.freepik.com/free-photo/confident-african-businesswoman-smiling-closeup-portrait-jobs-career-campaign_53876-143280.jpg?t=st=1715667894~exp=1715671494~hmac=6ef474ceb92b5c15dc413772880b1ba610f2d5aba3d221a883f26e137f32f1fe&w=740"
             alt="mother"
             className="w-40 h-40 rounded-full object-cover"
           />
@@ -166,7 +170,9 @@ function MotherProfilePage() {
           Appointments
         </h1>
         <div className="my-2">
-          <Button variant="outline">Schedule appointment</Button>
+          <CreateMotherAppointmentModal>
+            <Button variant="outline">Schedule appointment</Button>
+          </CreateMotherAppointmentModal>
         </div>
 
         <AppointmentTable appointments={appointments as Appointment[]} />
@@ -178,9 +184,9 @@ function MotherProfilePage() {
           Mother Vaccination
         </h1>
         <div className="my-2">
-          <AddChildVaccinationModal>
+          <AddMotherVaccinationModal>
             <Button variant="outline">Vaccinate</Button>
-          </AddChildVaccinationModal>
+          </AddMotherVaccinationModal>
         </div>
         <MotherVaccineTable vaccines={formattedMotherVaccines} />
       </div>
@@ -197,7 +203,9 @@ function MotherProfilePage() {
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
         <h1 className="font-semibold text-xl tracking-tight mb-4">Children</h1>
         <div className="my-2">
-          <Button variant="outline">Add child</Button>
+          <RegisterChildModal>
+            <Button variant="outline">Add child</Button>
+          </RegisterChildModal>
         </div>
         {/* child table */}
         <ChildrenByMotherTable children={formattedChildren} />

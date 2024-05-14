@@ -11,6 +11,7 @@ import {
   UpdateMotherAction,
   ViewDetailAction,
 } from "../table-action/mother-table-row-actions";
+import MotherTableToolbarAction from "../table-action/mother-table-toolbar-action";
 
 //column definitions...
 const columns: MRT_ColumnDef<any>[] = [
@@ -101,7 +102,7 @@ const MotherTable = ({ mothers }: { mothers: any[] }) => {
         UpdateMotherAction,
         DeactivateMotherAction,
       ]}
-      // ToolBarAction={}
+      ToolBarAction={MotherTableToolbarAction}
     />
   );
 };
