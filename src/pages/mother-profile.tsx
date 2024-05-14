@@ -108,7 +108,7 @@ function MotherProfilePage() {
         {/* profile section  */}
         <div className="flex items-center gap-8">
           <img
-            src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=740"
+            src="https://img.freepik.com/free-photo/confident-african-businesswoman-smiling-closeup-portrait-jobs-career-campaign_53876-143280.jpg?t=st=1715667894~exp=1715671494~hmac=6ef474ceb92b5c15dc413772880b1ba610f2d5aba3d221a883f26e137f32f1fe&w=740"
             alt="mother"
             className="w-40 h-40 rounded-full object-cover"
           />
