@@ -38,6 +38,8 @@ import { selectIsAuthenticated } from "./features/authSlice";
 import AddVaccinePage from "./pages/add-vaccine";
 import TreatmentInfo from "./pages/treatment-info";
 import AddTreatmentInformationPage from "./pages/add-treatment-information";
+import MotherProfilePage from "./pages/mother-profile";
+import ChildDetailPage from "./pages/child-detail";
 
 // Create a client
 const queryClient = new QueryClient();

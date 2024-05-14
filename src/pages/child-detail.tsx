@@ -31,6 +31,7 @@ import { formatDate } from "@/utils/constants/date";
 import ChildrenOfMotherVaccTable from "@/components/table/children-vaccination-by-mother";
 import ChildVaccines from "@/components/table/child-vaccination";
 import ChildVaccinesTable from "@/components/table/child-vaccination";
+import AddChildVaccinationModal from "@/components/modal/child-vaccination-modal";
 
 function ChildDetailPage() {
   const { isPending: isFetchingChildren, child } = useGetChild();
@@ -40,19 +41,20 @@ function ChildDetailPage() {
   console.log(child);
 
   if (isFetchingChildren || isFetchingVaccines) return <Spinner />;
+  if (!child) return <Empty resourceName="Child" />;
 
-  const motherFullName = `${child.mother.user.profile.firstName} ${child.mother.user.profile.lastName}`;
-  const hpFullName = `${child.registrar.profile.firstName} ${child.registrar.profile.lastName}`;
-  const hsName = child.mother.user.healthStation.name;
+  const motherFullName = `${child?.mother?.user?.profile?.firstName} ${child?.mother?.user?.profile?.lastName}`;
+  const hpFullName = `${child?.registrar?.profile?.firstName} ${child.registrar?.profile?.lastName}`;
+  const hsName = child?.mother?.user?.healthStation?.name;
 
-  const formattedChildVaccinination: ChildVaccineType[] = vaccines.map(
+  const formattedChildVaccinination: ChildVaccineType[] = vaccines?.map(
     (vaccine: any) => {
       return {
-        id: vaccine.id,
-        vaccine: vaccine.vaccine.name,
-        healthStation: vaccine.healthStation.name,
-        isGiven: vaccine.isGiven,
-        givenDate: formatDate(new Date(vaccine.createdDateTime)),
+        id: vaccine?.id,
+        vaccine: vaccine?.vaccine?.name,
+        healthStation: vaccine?.healthStation?.name,
+        isGiven: vaccine?.isGiven,
+        givenDate: formatDate(new Date(vaccine?.createdDateTime)),
       };
     }
   );
@@ -62,19 +64,13 @@ function ChildDetailPage() {
       <PageHeader pageName="Mothers Profile" />
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-6 px-4 relative mb-2">
         {/* profile section  */}
-        <div className="flex items-center gap-8">
-          <img
-            src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=740"
-            alt="child"
-            className="w-40 h-40 rounded-full object-cover"
-          />
-          <div>
-            <h1 className="font-semibold text-xl tracking-tight">
-              Kiya Kebede Kebede
-            </h1>
-            {/* <p className="text-sm ">Completed Vaccination</p> */}
-          </div>
-          <div>
+
+        <div className="flex gap-8 items-center">
+          <h1 className="font-semibold text-xl tracking-tight">
+            Kiya Kebede Kebede
+          </h1>
+
+          <div className="my-2">
             <Button variant="outline">Edit Profile</Button>
           </div>
         </div>
@@ -127,7 +123,9 @@ function ChildDetailPage() {
           Child Vaccination
         </h1>
         <div className="my-2 flex gap-4 items-center">
-          <Button variant="outline">Add Vaccination</Button>
+          <AddChildVaccinationModal>
+            <Button variant="outline">Add Vaccination</Button>
+          </AddChildVaccinationModal>
           <Button variant="outline" disabled={!child.isVaccineCompleted}>
             Generate Vaccination
           </Button>

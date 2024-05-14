@@ -23,6 +23,7 @@ import {
 import MotherVaccineTable from "@/components/table/mother-vaccine-table";
 import { formatDate } from "@/utils/constants/date";
 import ChildrenOfMotherVaccTable from "@/components/table/children-vaccination-by-mother";
+import AddChildVaccinationModal from "@/components/modal/child-vaccination-modal";
 
 const appointments: Appointment[] = [
   {
@@ -74,26 +75,28 @@ function MotherProfilePage() {
     return <Spinner />;
 
   console.log(mother);
+  console.log(motherVaccines);
+  console.log(children);
 
   const formattedChildren: ChildOfMother[] = children.map((child: any) => {
     return {
-      id: child.id,
-      firstName: child.firstName,
-      lastName: child.lastName,
-      middleName: child.middleName,
+      id: child?.id,
+      firstName: child?.firstName,
+      lastName: child?.lastName,
+      middleName: child?.middleName,
       isVaccineCompleted:
-        child.isVaccineCompleted == true ? "completed" : "ongoing",
+        child?.isVaccineCompleted == true ? "completed" : "ongoing",
     };
   });
 
-  const formattedMotherVaccines: MotherVaccine[] = motherVaccines.map(
+  const formattedMotherVaccines: MotherVaccine[] = motherVaccines?.map(
     (vaccine: any) => {
       return {
-        id: vaccine.id,
-        vaccine: vaccine.vaccine.name,
-        healthStation: vaccine.healthStation.name,
-        isGiven: vaccine.isGiven,
-        givenDate: formatDate(new Date(vaccine.createdDateTime)),
+        id: vaccine?.id,
+        vaccine: vaccine?.vaccine?.name,
+        healthStation: vaccine?.healthStation?.name,
+        isGiven: vaccine?.isGiven,
+        givenDate: formatDate(new Date(vaccine?.createdDateTime)),
       };
     }
   );
@@ -129,11 +132,11 @@ function MotherProfilePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               <div>
                 <p className="text-sm text-gray-500">Email</p>
-                <p className="text-sm">em@email.com </p>
+                <p className="text-sm">{mother.email} </p>
               </div>
               <div>
                 <p className="text-sm text-gray-500">Phone Number</p>
-                <p className="text-sm">+251000010203</p>
+                <p className="text-sm">{mother.phone}</p>
               </div>
 
               <div>
@@ -162,6 +165,9 @@ function MotherProfilePage() {
         <h1 className="font-semibold text-xl tracking-tight mb-4">
           Appointments
         </h1>
+        <div className="my-2">
+          <Button variant="outline">Schedule appointment</Button>
+        </div>
 
         <AppointmentTable appointments={appointments as Appointment[]} />
       </div>
@@ -171,6 +177,11 @@ function MotherProfilePage() {
         <h1 className="font-semibold text-xl tracking-tight mb-4">
           Mother Vaccination
         </h1>
+        <div className="my-2">
+          <AddChildVaccinationModal>
+            <Button variant="outline">Vaccinate</Button>
+          </AddChildVaccinationModal>
+        </div>
         <MotherVaccineTable vaccines={formattedMotherVaccines} />
       </div>
 
@@ -185,6 +196,9 @@ function MotherProfilePage() {
       {/* mother child section */}
       <div className="mx-auto w-[98%] h-fit bg-card rounded overflow-auto mt-2 py-4 px-4 relative">
         <h1 className="font-semibold text-xl tracking-tight mb-4">Children</h1>
+        <div className="my-2">
+          <Button variant="outline">Add child</Button>
+        </div>
         {/* child table */}
         <ChildrenByMotherTable children={formattedChildren} />
       </div>
